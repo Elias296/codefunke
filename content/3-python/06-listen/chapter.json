@@ -1,0 +1,310 @@
+{
+  "title": "Listen",
+  "summary": "Viele Werte speichern, durchlaufen und auswerten.",
+  "icon": "list",
+  "tasks": [
+    {
+      "id": "fruechte",
+      "title": "Lieblingsfrüchte",
+      "difficulty": 1,
+      "instructions": "Erstelle eine Liste `fruechte` mit **drei** Früchten deiner Wahl. Gib dann den **ersten** Eintrag aus (mit dem Index!).",
+      "starter": "fruechte = []\n",
+      "checks": [
+        {
+          "type": "assert",
+          "code": "assert isinstance(fruechte, list) and len(fruechte) == 3",
+          "message": "`fruechte` soll eine Liste mit genau 3 Einträgen sein."
+        },
+        {
+          "type": "code",
+          "pattern": "fruechte\\s*\\[\\s*0\\s*\\]",
+          "message": "Greif mit `fruechte[0]` auf den ersten Eintrag zu."
+        },
+        {
+          "type": "assert",
+          "code": "assert __output__.strip() == str(fruechte[0])",
+          "message": "Gib nur den ersten Eintrag aus."
+        }
+      ],
+      "hints": [
+        "Eine Liste mit drei Texten: `[\"Apfel\", \"Banane\", \"Kiwi\"]`.",
+        "Der erste Eintrag hat den Index 0: `print(fruechte[0])`."
+      ],
+      "solution": [
+        "fruechte = [\"Apfel\", \"Banane\", \"Kiwi\"]",
+        "print(fruechte[0])"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "einkauf",
+      "title": "Die Einkaufsliste",
+      "difficulty": 1,
+      "instructions": "Hänge **Äpfel** und **Käse** an die Einkaufsliste an (mit `append`). Gib danach aus, wie viele Dinge auf der Liste stehen (das sollten **4** sein).",
+      "starter": "einkauf = [\"Brot\", \"Milch\"]\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "\\.append\\(",
+          "message": "Benutze `einkauf.append(...)`."
+        },
+        {
+          "type": "assert",
+          "code": "assert einkauf == ['Brot', 'Milch', 'Äpfel', 'Käse']",
+          "message": "Die Liste soll am Ende so aussehen: [\"Brot\", \"Milch\", \"Äpfel\", \"Käse\"]."
+        },
+        {
+          "type": "code",
+          "pattern": "len\\(",
+          "message": "Zähle die Einträge mit `len(einkauf)`."
+        },
+        {
+          "type": "output",
+          "expected": "4"
+        }
+      ],
+      "hints": [
+        "`einkauf.append(\"Äpfel\")` hängt einen Eintrag hinten an.",
+        "Zweimal `append`, dann `print(len(einkauf))`."
+      ],
+      "solution": [
+        "einkauf = [\"Brot\", \"Milch\"]",
+        "einkauf.append(\"Äpfel\")",
+        "einkauf.append(\"Käse\")",
+        "print(len(einkauf))"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "tiere",
+      "title": "Alle durchgehen",
+      "difficulty": 2,
+      "instructions": "Laufe mit einer `for`-Schleife durch die Liste und gib für jedes Tier **Ich mag TIER!** aus:\n\n```output\nIch mag Hund!\nIch mag Katze!\nIch mag Drache!\n```",
+      "starter": "tiere = [\"Hund\", \"Katze\", \"Drache\"]\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "for\\s+\\w+\\s+in\\s+tiere",
+          "message": "Laufe mit `for tier in tiere:` durch die Liste."
+        },
+        {
+          "type": "output",
+          "expected": "Ich mag Hund!\nIch mag Katze!\nIch mag Drache!"
+        }
+      ],
+      "hints": [
+        "`for tier in tiere:` – die Variable `tier` bekommt nacheinander jeden Eintrag.",
+        "In der Schleife: `print(f\"Ich mag {tier}!\")`"
+      ],
+      "solution": [
+        "tiere = [\"Hund\", \"Katze\", \"Drache\"]",
+        "for tier in tiere:",
+        "    print(f\"Ich mag {tier}!\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "auswerten",
+      "title": "Punkte auswerten",
+      "difficulty": 2,
+      "instructions": "Werte die Punkte aus und gib genau diese drei Zeilen aus (die Zahlen soll Python berechnen):\n\n```output\nSumme: 34\nBester Wert: 10\nDurchschnitt: 6.8\n```",
+      "starter": "punkte = [7, 3, 9, 5, 10]\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "34|6\\.8",
+          "negate": true,
+          "message": "Lass Python rechnen – mit `sum`, `max` und `len`."
+        },
+        {
+          "type": "output",
+          "expected": "Summe: 34\nBester Wert: 10\nDurchschnitt: 6.8"
+        }
+      ],
+      "hints": [
+        "`sum(punkte)`, `max(punkte)` und `len(punkte)` helfen dir.",
+        "Durchschnitt: `sum(punkte) / len(punkte)`. Zum Beispiel: `print(f\"Summe: {sum(punkte)}\")`"
+      ],
+      "solution": [
+        "punkte = [7, 3, 9, 5, 10]",
+        "print(f\"Summe: {sum(punkte)}\")",
+        "print(f\"Bester Wert: {max(punkte)}\")",
+        "print(f\"Durchschnitt: {sum(punkte) / len(punkte)}\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "filter",
+      "title": "Nur die Großen",
+      "difficulty": 3,
+      "instructions": "Schreib eine Funktion `nur_grosse(zahlen, grenze)`, die eine **neue Liste** mit allen Zahlen zurückgibt, die **größer als** `grenze` sind – in der ursprünglichen Reihenfolge. Beispiel: `nur_grosse([1, 5, 10, 3], 4)` ergibt `[5, 10]`.",
+      "starter": [
+        "def nur_grosse(zahlen, grenze):",
+        "    ergebnis = []",
+        "    return ergebnis"
+      ],
+      "checks": [
+        {
+          "type": "assert",
+          "code": "assert nur_grosse([1, 5, 10, 3], 4) == [5, 10]",
+          "message": "`nur_grosse([1, 5, 10, 3], 4)` soll `[5, 10]` ergeben."
+        },
+        {
+          "type": "assert",
+          "code": "assert nur_grosse([4, 4, 5], 4) == [5]",
+          "message": "Zahlen, die genau gleich der Grenze sind, gehören nicht dazu – nur *größere*."
+        },
+        {
+          "type": "assert",
+          "code": "assert nur_grosse([], 0) == [] and nur_grosse([9, 1, 8], 0) == [9, 1, 8]",
+          "message": "Teste auch eine leere Liste und eine Liste, in der alles größer ist."
+        }
+      ],
+      "hints": [
+        "Laufe mit `for` durch `zahlen` und prüfe jede Zahl mit `if`.",
+        "`for z in zahlen:` → `if z > grenze:` → `ergebnis.append(z)`"
+      ],
+      "solution": [
+        "def nur_grosse(zahlen, grenze):",
+        "    ergebnis = []",
+        "    for z in zahlen:",
+        "        if z > grenze:",
+        "            ergebnis.append(z)",
+        "    return ergebnis"
+      ],
+      "kind": "code",
+      "language": "python"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "text",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "liste = [\"a\", \"b\", \"c\"]\nprint(liste[1])",
+        "answer": [
+          "b"
+        ],
+        "placeholder": "Ausgabe",
+        "explanation": "Index 1 ist der zweite Eintrag – Python zählt ab 0."
+      },
+      {
+        "type": "single",
+        "question": "Was liefert `liste[-1]`?",
+        "options": [
+          "Einen Fehler",
+          "Den ersten Eintrag",
+          "Den letzten Eintrag",
+          "Die Anzahl der Einträge"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "single",
+        "question": "Was ergibt `len([1, 2, 3, 4])`?",
+        "options": [
+          "3",
+          "4",
+          "10",
+          "[1, 2, 3, 4]"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Wie hängst du „Kiwi“ hinten an die Liste `obst` an?",
+        "options": [
+          "obst.add(\"Kiwi\")",
+          "obst + \"Kiwi\"",
+          "obst.append(\"Kiwi\")",
+          "append(obst, \"Kiwi\")"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "multiple",
+        "question": "Welche Aussagen über `zahlen = [3, 1, 2]` stimmen?",
+        "options": [
+          "zahlen[0] ist 3",
+          "sum(zahlen) ist 6",
+          "sorted(zahlen) ist [1, 2, 3]",
+          "3 in zahlen ist False"
+        ],
+        "answer": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  },
+  "project": {
+    "title": "Highscore-Liste",
+    "kind": "code",
+    "language": "python",
+    "description": "Bau eine **Highscore-Liste**: Das Programm fragt so lange nach Punktzahlen, bis man **nichts** eingibt (nur Enter). Dann zeigt es die **Top 3** (von groß nach klein), den Durchschnitt und wie viele Runden gespielt wurden.",
+    "starter": [
+      "punkte = []",
+      "",
+      "while True:",
+      "    eingabe = input(\"Punkte (Enter = fertig): \")",
+      "    if eingabe == \"\":",
+      "        break"
+    ],
+    "requirements": [
+      "Eingaben werden in einer Liste gesammelt.",
+      "Leere Eingabe beendet das Sammeln.",
+      "Die Top 3 werden sortiert ausgegeben.",
+      "Durchschnitt und Anzahl werden angezeigt."
+    ],
+    "checks": [
+      {
+        "type": "code",
+        "pattern": "\\.append\\(",
+        "message": "Sammle die Punkte mit `punkte.append(...)` in der Liste."
+      },
+      {
+        "type": "code",
+        "pattern": "sorted\\(|\\.sort\\(",
+        "message": "Sortiere die Liste mit `sorted(...)` oder `.sort()`."
+      },
+      {
+        "type": "assert",
+        "inputs": [
+          "5",
+          "12",
+          "8",
+          "3",
+          ""
+        ],
+        "code": "assert '12' in __output__ and __output__.find('12') < __output__.rfind('8') and '4' in __output__",
+        "message": "Bei 5, 12, 8, 3 sollen die Top 3 (12, 8, 5) erscheinen – und die Anzahl 4."
+      }
+    ],
+    "ideas": [
+      "Zeig neben jedem Platz eine Medaille: 🥇 🥈 🥉",
+      "Frag zusätzlich nach Namen und speichere sie in einer zweiten Liste."
+    ],
+    "example": [
+      "punkte = []",
+      "",
+      "while True:",
+      "    eingabe = input(\"Punkte (Enter = fertig): \")",
+      "    if eingabe == \"\":",
+      "        break",
+      "    punkte.append(int(eingabe))",
+      "",
+      "top = sorted(punkte, reverse=True)",
+      "print(\"Top 3:\")",
+      "for platz in range(min(3, len(top))):",
+      "    print(f\"{platz + 1}. {top[platz]}\")",
+      "print(f\"Gespielte Runden: {len(punkte)}\")",
+      "if punkte:",
+      "    print(f\"Durchschnitt: {sum(punkte) / len(punkte)}\")"
+    ]
+  }
+}

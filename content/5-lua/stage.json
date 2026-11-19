@@ -1,0 +1,17 @@
+{
+  "order": 5,
+  "title": "Lua",
+  "short": "Lua",
+  "subtitle": "Die Sprache der Spiele-Welten",
+  "description": "Lua ist klein, schnell und steckt in vielen Spielen – zum Beispiel in Roblox (dort heißt die Variante Luau).",
+  "language": "lua",
+  "color": "var(--color-stage-lua)",
+  "icon": "moon",
+  "status": "bald",
+  "planned": [
+    { "title": "Lua-Grundlagen", "summary": "print, Variablen und local." },
+    { "title": "Tabellen", "summary": "Die Allzweck-Datenstruktur von Lua." },
+    { "title": "Funktionen", "summary": "Eigene Befehle bauen." },
+    { "title": "Ausblick: Spiele mit Roblox", "summary": "Wie Lua in Spiele-Engines verwendet wird." }
+  ]
+}

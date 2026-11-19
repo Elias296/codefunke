@@ -1,0 +1,399 @@
+{
+  "title": "Entscheidungen",
+  "summary": "if, elif, else – dein Programm trifft Entscheidungen.",
+  "icon": "branch",
+  "tasks": [
+    {
+      "id": "jacke",
+      "title": "Jacke oder T-Shirt?",
+      "difficulty": 1,
+      "instructions": "Frag nach der Temperatur. Wenn sie **unter 15** Grad liegt, gib **Zieh eine Jacke an!** aus, sonst **T-Shirt-Wetter!**",
+      "starter": "temperatur = int(input(\"Wie warm ist es? \"))",
+      "checks": [
+        {
+          "type": "output",
+          "inputs": [
+            "10"
+          ],
+          "expected": "Zieh eine Jacke an!",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "25"
+          ],
+          "expected": "T-Shirt-Wetter!",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "15"
+          ],
+          "expected": "T-Shirt-Wetter!",
+          "match": "contains",
+          "message": "Bei genau 15 Grad ist es nicht *unter* 15 – dann ist T-Shirt-Wetter."
+        }
+      ],
+      "hints": [
+        "`if temperatur < 15:` – und nicht den Doppelpunkt vergessen!",
+        "Unter dem `if` eingerückt die Jacke, dann `else:` und eingerückt das T-Shirt."
+      ],
+      "solution": [
+        "temperatur = int(input(\"Wie warm ist es? \"))",
+        "",
+        "if temperatur < 15:",
+        "    print(\"Zieh eine Jacke an!\")",
+        "else:",
+        "    print(\"T-Shirt-Wetter!\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "gerade",
+      "title": "Gerade oder ungerade?",
+      "difficulty": 2,
+      "instructions": "Frag nach einer Zahl und gib aus, ob sie gerade ist. Bei **4**: **4 ist gerade.** Bei **7**: **7 ist ungerade.** Benutze den Rest-Operator `%`.",
+      "starter": "zahl = int(input(\"Gib eine Zahl ein: \"))\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "%\\s*2",
+          "message": "Benutze den Rest-Operator: `zahl % 2`."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "4"
+          ],
+          "expected": "4 ist gerade.",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "7"
+          ],
+          "expected": "7 ist ungerade.",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "0"
+          ],
+          "expected": "0 ist gerade.",
+          "match": "contains"
+        }
+      ],
+      "hints": [
+        "Eine Zahl ist gerade, wenn `zahl % 2 == 0` ist.",
+        "`if zahl % 2 == 0:` → `print(f\"{zahl} ist gerade.\")`, `else:` → `print(f\"{zahl} ist ungerade.\")`"
+      ],
+      "solution": [
+        "zahl = int(input(\"Gib eine Zahl ein: \"))",
+        "if zahl % 2 == 0:",
+        "    print(f\"{zahl} ist gerade.\")",
+        "else:",
+        "    print(f\"{zahl} ist ungerade.\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "noten",
+      "title": "Der Notenrechner",
+      "difficulty": 2,
+      "instructions": "Frag nach den Punkten in einem Test (0–100) und gib **genau eins** davon aus:\n\n- ab 90: **sehr gut**\n- ab 75: **gut**\n- ab 50: **bestanden**\n- sonst: **nicht bestanden**",
+      "starter": [
+        "punkte = int(input(\"Wie viele Punkte? \"))",
+        "",
+        "if punkte >= 90:",
+        "    print(\"sehr gut\")"
+      ],
+      "checks": [
+        {
+          "type": "output",
+          "inputs": [
+            "95"
+          ],
+          "expected": "^sehr gut$",
+          "match": "regex",
+          "message": "Bei 95 Punkten soll „sehr gut“ herauskommen."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "80"
+          ],
+          "expected": "^gut$",
+          "match": "regex",
+          "message": "Bei 80 Punkten soll „gut“ herauskommen (und sonst nichts)."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "75"
+          ],
+          "expected": "^gut$",
+          "match": "regex",
+          "message": "Bei genau 75 Punkten soll „gut“ herauskommen – „ab 75“ heißt `>= 75`."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "60"
+          ],
+          "expected": "^bestanden$",
+          "match": "regex",
+          "message": "Bei 60 Punkten soll „bestanden“ herauskommen."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "20"
+          ],
+          "expected": "^nicht bestanden$",
+          "match": "regex",
+          "message": "Bei 20 Punkten soll „nicht bestanden“ herauskommen."
+        }
+      ],
+      "hints": [
+        "Für die mittleren Fälle brauchst du `elif`. Die Reihenfolge ist wichtig: von groß nach klein.",
+        "`elif punkte >= 75:` → gut, `elif punkte >= 50:` → bestanden, `else:` → nicht bestanden"
+      ],
+      "solution": [
+        "punkte = int(input(\"Wie viele Punkte? \"))",
+        "",
+        "if punkte >= 90:",
+        "    print(\"sehr gut\")",
+        "elif punkte >= 75:",
+        "    print(\"gut\")",
+        "elif punkte >= 50:",
+        "    print(\"bestanden\")",
+        "else:",
+        "    print(\"nicht bestanden\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "kino",
+      "title": "Die Kino-Kasse",
+      "difficulty": 3,
+      "instructions": "Programmiere die Kino-Kasse. Frag nach dem Alter:\n\n- **unter 6** oder **ab 65**: **Eintritt frei!**\n- sonst **unter 18**: **Kinderticket: 5 Euro**\n- alle anderen: **Erwachsenenticket: 9 Euro**\n\nBenutze für den ersten Fall `or`.",
+      "starter": "alter = int(input(\"Wie alt bist du? \"))\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "\\bor\\b",
+          "message": "Fasse „unter 6“ und „ab 65“ mit `or` in einer Bedingung zusammen."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "4"
+          ],
+          "expected": "Eintritt frei!",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "70"
+          ],
+          "expected": "Eintritt frei!",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "65"
+          ],
+          "expected": "Eintritt frei!",
+          "match": "contains",
+          "message": "Mit genau 65 ist der Eintritt frei („ab 65“ heißt `>= 65`)."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "12"
+          ],
+          "expected": "Kinderticket: 5 Euro",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "30"
+          ],
+          "expected": "Erwachsenenticket: 9 Euro",
+          "match": "contains"
+        }
+      ],
+      "hints": [
+        "Die erste Bedingung: `if alter < 6 or alter >= 65:`",
+        "Danach `elif alter < 18:` für das Kinderticket und `else:` für Erwachsene."
+      ],
+      "solution": [
+        "alter = int(input(\"Wie alt bist du? \"))",
+        "if alter < 6 or alter >= 65:",
+        "    print(\"Eintritt frei!\")",
+        "elif alter < 18:",
+        "    print(\"Kinderticket: 5 Euro\")",
+        "else:",
+        "    print(\"Erwachsenenticket: 9 Euro\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Womit prüft man in Python, ob zwei Werte gleich sind?",
+        "options": [
+          "=",
+          "==",
+          "===",
+          "equals"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "x = 7\nif x > 10:\n    print(\"A\")\nelif x > 5:\n    print(\"B\")\nelse:\n    print(\"C\")",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "B und C"
+        ],
+        "answer": 1,
+        "explanation": "7 > 10 ist falsch, 7 > 5 ist wahr → B. Danach wird nichts mehr geprüft."
+      },
+      {
+        "type": "text",
+        "question": "Was gibt `print(not True)` aus?",
+        "answer": [
+          "False"
+        ],
+        "caseSensitive": false,
+        "placeholder": "Ausgabe"
+      },
+      {
+        "type": "single",
+        "question": "Wofür ist die Einrückung nach `if ...:` da?",
+        "options": [
+          "Nur damit es schöner aussieht",
+          "Sie zeigt, welche Zeilen zum if gehören",
+          "Sie macht das Programm schneller",
+          "Für Kommentare"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was ergibt `(5 > 3) and (2 > 4)`?",
+        "options": [
+          "True",
+          "False"
+        ],
+        "answer": 1,
+        "explanation": "Bei `and` müssen beide stimmen – 2 > 4 ist falsch."
+      },
+      {
+        "type": "order",
+        "question": "Bring die Zeilen in die richtige Reihenfolge.",
+        "lines": [
+          "zahl = int(input())",
+          "if zahl > 0:",
+          "    print(\"positiv\")",
+          "else:",
+          "    print(\"nicht positiv\")"
+        ],
+        "codeLanguage": "python"
+      }
+    ]
+  },
+  "project": {
+    "title": "Das Quiz-Orakel",
+    "kind": "code",
+    "language": "python",
+    "description": "Programmiere ein kleines **Quiz** mit mindestens **3 Fragen**. Nach jeder Antwort sagt dein Programm, ob sie richtig war. Zähl die Punkte in einer Variable mit und gib am Ende eine Bewertung aus – je nach Punktzahl eine andere!",
+    "starter": [
+      "punkte = 0",
+      "",
+      "antwort = input(\"Wie heißt die Hauptstadt von Frankreich? \")",
+      "if antwort == \"Paris\":",
+      "    print(\"Richtig!\")",
+      "    punkte += 1",
+      "else:",
+      "    print(\"Leider falsch – es ist Paris.\")"
+    ],
+    "requirements": [
+      "Mindestens 3 Fragen.",
+      "Die Punkte werden gezählt.",
+      "Am Ende gibt es je nach Punktzahl eine andere Nachricht (if/elif/else)."
+    ],
+    "checks": [
+      {
+        "type": "code",
+        "pattern": "(input\\([\\s\\S]*){3}",
+        "message": "Dein Quiz braucht mindestens 3 Fragen."
+      },
+      {
+        "type": "code",
+        "pattern": "elif|else",
+        "message": "Gib am Ende mit if/elif/else eine Bewertung aus."
+      },
+      {
+        "type": "noError",
+        "inputs": [
+          "Paris",
+          "8",
+          "blau"
+        ]
+      }
+    ],
+    "ideas": [
+      "Mach die Antworten unempfindlich für Groß/Klein mit `antwort.lower()`.",
+      "Gib bei falschen Antworten einen Tipp und eine zweite Chance."
+    ],
+    "example": [
+      "punkte = 0",
+      "",
+      "antwort = input(\"Wie heißt die Hauptstadt von Frankreich? \")",
+      "if antwort == \"Paris\":",
+      "    print(\"Richtig!\")",
+      "    punkte += 1",
+      "else:",
+      "    print(\"Leider falsch – es ist Paris.\")",
+      "",
+      "antwort = input(\"Wie viele Beine hat eine Spinne? \")",
+      "if antwort == \"8\":",
+      "    print(\"Richtig!\")",
+      "    punkte += 1",
+      "else:",
+      "    print(\"Falsch – es sind 8.\")",
+      "",
+      "antwort = input(\"Welche Farbe hat der Himmel bei schönem Wetter? \")",
+      "if antwort == \"blau\":",
+      "    print(\"Richtig!\")",
+      "    punkte += 1",
+      "else:",
+      "    print(\"Falsch – blau!\")",
+      "",
+      "if punkte == 3:",
+      "    print(\"Perfekt! Du bist ein Quiz-Drache!\")",
+      "elif punkte >= 1:",
+      "    print(f\"{punkte} Punkte – nicht schlecht!\")",
+      "else:",
+      "    print(\"Beim nächsten Mal klappt es!\")"
+    ]
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "title": "Schleifen",
+  "summary": "for, while, range – und Zeichnen mit der Turtle.",
+  "icon": "repeat",
+  "tasks": [
+    {
+      "id": "countdown",
+      "title": "Raketen-Countdown",
+      "difficulty": 1,
+      "instructions": "Zähl mit einer **for-Schleife** von **10 bis 1** rückwärts (jede Zahl in eine eigene Zeile) und gib danach **Start!** aus.",
+      "starter": "# Countdown mit for und range\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "for\\s+\\w+\\s+in\\s+range",
+          "message": "Benutze eine `for`-Schleife mit `range`."
+        },
+        {
+          "type": "output",
+          "expected": [
+            "10",
+            "9",
+            "8",
+            "7",
+            "6",
+            "5",
+            "4",
+            "3",
+            "2",
+            "1",
+            "Start!"
+          ]
+        }
+      ],
+      "hints": [
+        "Rückwärts zählen geht mit drei Werten: `range(start, ende, schritt)`. Das Ende ist nicht dabei!",
+        "`for i in range(10, 0, -1):` → eingerückt `print(i)`. Danach (nicht eingerückt) `print(\"Start!\")`."
+      ],
+      "solution": [
+        "for i in range(10, 0, -1):",
+        "    print(i)",
+        "print(\"Start!\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "einmaleins",
+      "title": "Die 7er-Reihe",
+      "difficulty": 2,
+      "instructions": "Gib die **7er-Reihe** von 1 bis 10 aus – genau in diesem Format:\n\n```output\n1 x 7 = 7\n2 x 7 = 14\n…\n10 x 7 = 70\n```",
+      "starter": "for i in range(1, 11):\n    print(i)\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "for\\s+\\w+\\s+in",
+          "message": "Benutze eine `for`-Schleife."
+        },
+        {
+          "type": "output",
+          "expected": "1 x 7 = 7\n2 x 7 = 14\n3 x 7 = 21\n4 x 7 = 28\n5 x 7 = 35\n6 x 7 = 42\n7 x 7 = 49\n8 x 7 = 56\n9 x 7 = 63\n10 x 7 = 70"
+        }
+      ],
+      "hints": [
+        "Mit einem f-String geht das schön: `f\"{i} x 7 = {i * 7}\"`.",
+        "`for i in range(1, 11):` → `print(f\"{i} x 7 = {i * 7}\")`"
+      ],
+      "solution": [
+        "for i in range(1, 11):",
+        "    print(f\"{i} x 7 = {i * 7}\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "summe",
+      "title": "Der kleine Gauß",
+      "difficulty": 2,
+      "instructions": "Berechne mit einer Schleife die **Summe aller Zahlen von 1 bis 100** in der Variable `summe` und gib sie aus. (Nicht schummeln: Python soll rechnen!)",
+      "starter": "summe = 0\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "\\b(for|while)\\b",
+          "message": "Benutze eine Schleife."
+        },
+        {
+          "type": "code",
+          "pattern": "5050",
+          "negate": true,
+          "message": "Lass Python rechnen – schreib das Ergebnis nicht selbst hin."
+        },
+        {
+          "type": "assert",
+          "code": "assert summe == 5050",
+          "message": "`summe` ist noch nicht 5050. Läuft deine Schleife wirklich von 1 bis einschließlich 100? (`range(1, 101)`)"
+        },
+        {
+          "type": "output",
+          "expected": "5050"
+        }
+      ],
+      "hints": [
+        "Zähle in der Schleife jede Zahl zu `summe` dazu: `summe = summe + zahl`.",
+        "`for zahl in range(1, 101):` → `summe += zahl`. Danach `print(summe)`."
+      ],
+      "solution": [
+        "summe = 0",
+        "for zahl in range(1, 101):",
+        "    summe += zahl",
+        "print(summe)"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "turtle-quadrat",
+      "title": "Turtle-Quadrat",
+      "difficulty": 2,
+      "instructions": "Lass die **Turtle** ein **Quadrat** mit Seitenlänge **100** zeichnen – mit einer `for`-Schleife. Es sollen genau **4 Linien** entstehen.",
+      "starter": [
+        "import turtle",
+        "",
+        "t = turtle.Turtle()",
+        "t.color(\"orange\")"
+      ],
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "for\\s+\\w+\\s+in",
+          "message": "Benutze eine `for`-Schleife."
+        },
+        {
+          "type": "assert",
+          "code": "import turtle\nassert len(turtle._segments) == 4",
+          "message": "Die Turtle soll genau 4 Linien zeichnen."
+        },
+        {
+          "type": "assert",
+          "code": "import turtle\nimport math\nassert all(abs(math.dist(a, b) - 100) < 0.5 for a, b in turtle._segments)",
+          "message": "Jede Seite soll 100 lang sein."
+        },
+        {
+          "type": "assert",
+          "code": "import turtle\nassert turtle._segments[-1][1] == (0.0, 0.0)",
+          "message": "Das Quadrat ist nicht geschlossen – dreht sich die Turtle jedes Mal um 90 Grad?"
+        }
+      ],
+      "hints": [
+        "Wie bei Funki: 4-mal vorwärts und drehen.",
+        "`for i in range(4):` → `t.forward(100)` und `t.left(90)` (beide eingerückt)."
+      ],
+      "solution": [
+        "import turtle",
+        "",
+        "t = turtle.Turtle()",
+        "t.color(\"orange\")",
+        "for i in range(4):",
+        "    t.forward(100)",
+        "    t.left(90)"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "raten",
+      "title": "Rate die Zahl",
+      "difficulty": 3,
+      "instructions": "Die Geheimzahl ist **7**. Frag so lange nach einer Zahl, **bis** sie erraten ist. Bei jedem falschen Versuch erscheint **Falsch!**, am Ende **Richtig!**. Benutze eine `while`-Schleife.",
+      "starter": [
+        "geheim = 7",
+        "versuch = int(input(\"Rate eine Zahl: \"))"
+      ],
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "\\bwhile\\b",
+          "message": "Benutze eine `while`-Schleife."
+        },
+        {
+          "type": "assert",
+          "inputs": [
+            "3",
+            "5",
+            "7"
+          ],
+          "code": "assert __output__.count('Falsch!') == 2 and 'Richtig!' in __output__",
+          "message": "Bei den Versuchen 3, 5, 7 soll zweimal „Falsch!“ und dann „Richtig!“ erscheinen."
+        },
+        {
+          "type": "assert",
+          "inputs": [
+            "7"
+          ],
+          "code": "assert 'Falsch!' not in __output__ and 'Richtig!' in __output__",
+          "message": "Wer sofort 7 rät, soll direkt „Richtig!“ sehen."
+        }
+      ],
+      "hints": [
+        "Die Schleife läuft, solange `versuch != geheim`. In der Schleife: „Falsch!“ ausgeben und neu fragen.",
+        "`while versuch != geheim:` → `print(\"Falsch!\")` und `versuch = int(input(\"Rate nochmal: \"))`. Nach der Schleife: `print(\"Richtig!\")`."
+      ],
+      "solution": [
+        "geheim = 7",
+        "versuch = int(input(\"Rate eine Zahl: \"))",
+        "while versuch != geheim:",
+        "    print(\"Falsch!\")",
+        "    versuch = int(input(\"Rate nochmal: \"))",
+        "print(\"Richtig!\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "text",
+        "question": "Welche Zahl gibt `range(5)` als letzte aus?",
+        "answer": [
+          "4"
+        ],
+        "placeholder": "Zahl",
+        "explanation": "range(5) zählt 0, 1, 2, 3, 4 – das Ende ist nicht dabei."
+      },
+      {
+        "type": "single",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "for i in range(1, 4):\n    print(i * 2)",
+        "options": [
+          "1 2 3",
+          "2 4 6",
+          "2 4 6 8",
+          "0 2 4"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Wann entsteht eine Endlosschleife?",
+        "options": [
+          "Wenn man for benutzt",
+          "Wenn die while-Bedingung nie falsch wird",
+          "Wenn man print in der Schleife benutzt",
+          "Nie"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was macht `break`?",
+        "options": [
+          "Es macht eine Pause",
+          "Es verlässt die Schleife sofort",
+          "Es startet die Schleife neu",
+          "Es löscht eine Variable"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "order",
+        "question": "Bring die Zeilen in die richtige Reihenfolge, damit die Summe von 1 bis 10 ausgegeben wird.",
+        "lines": [
+          "summe = 0",
+          "for i in range(1, 11):",
+          "    summe += i",
+          "print(summe)"
+        ]
+      },
+      {
+        "type": "text",
+        "question": "Wie oft wird hier „Hi“ ausgegeben?",
+        "code": "for i in range(0, 10, 2):\n    print(\"Hi\")",
+        "answer": [
+          "5"
+        ],
+        "placeholder": "Zahl",
+        "explanation": "0, 2, 4, 6, 8 – fünf Zahlen."
+      }
+    ]
+  },
+  "project": {
+    "title": "Turtle-Kunstwerk",
+    "kind": "code",
+    "language": "python",
+    "description": "Erschaffe mit der Turtle ein **Kunstwerk** aus Schleifen: eine Blume aus Kreisen, einen bunten Stern, eine Spirale … Benutze mehrere Farben. Tipp: Eine Liste von Farben und eine Schleife darüber sehen toll aus!",
+    "starter": [
+      "import turtle",
+      "",
+      "t = turtle.Turtle()",
+      "t.speed(8)",
+      "farben = [\"red\", \"orange\", \"gold\", \"green\", \"blue\", \"purple\"]"
+    ],
+    "requirements": [
+      "Mindestens eine Schleife.",
+      "Mindestens 20 Linien.",
+      "Mindestens zwei Farben."
+    ],
+    "checks": [
+      {
+        "type": "code",
+        "pattern": "\\b(for|while)\\b",
+        "message": "Benutze mindestens eine Schleife."
+      },
+      {
+        "type": "assert",
+        "code": "import turtle\nassert len(turtle._segments) >= 20",
+        "message": "Dein Kunstwerk soll aus mindestens 20 Linien bestehen."
+      }
+    ],
+    "ideas": [
+      "Probier `t.circle(50)` in einer Schleife mit `t.right(30)`.",
+      "Mit `turtle.bgcolor(\"black\")` wird der Hintergrund schwarz – Neonfarben leuchten dann richtig!"
+    ],
+    "example": [
+      "import turtle",
+      "",
+      "t = turtle.Turtle()",
+      "t.speed(0)",
+      "farben = [\"red\", \"orange\", \"gold\", \"green\", \"blue\", \"purple\"]",
+      "for i in range(36):",
+      "    t.color(farben[i % 6])",
+      "    t.forward(100)",
+      "    t.left(170)"
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "order": 3,
+  "title": "Python",
+  "short": "Python",
+  "subtitle": "Deine erste echte Textsprache",
+  "description": "Python ist leicht zu lesen und unglaublich vielseitig. Du lernst Variablen, Entscheidungen, Schleifen, Funktionen und Listen – und baust eigene kleine Spiele.",
+  "language": "python",
+  "color": "var(--color-stage-python)",
+  "icon": "terminal",
+  "status": "verfuegbar",
+  "chapters": [
+    "01-hallo",
+    "02-variablen",
+    "03-entscheidungen",
+    "04-schleifen",
+    "05-funktionen",
+    "06-listen",
+    "07-werkstatt"
+  ],
+  "finalTest": {
+    "title": "Abschlusstest: Python",
+    "intro": "Zeig, was du über Python gelernt hast: von print bis zu Listen und Funktionen.",
+    "passScore": 0.7,
+    "questions": [
+      {
+        "type": "text",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "x = 4\ny = x * 2 + 1\nprint(y)",
+        "answer": [
+          "9"
+        ],
+        "placeholder": "Ausgabe"
+      },
+      {
+        "type": "single",
+        "question": "Warum stürzt dieses Programm ab?",
+        "code": "alter = input(\"Alter? \")\nprint(alter + 1)",
+        "options": [
+          "print ist falsch geschrieben",
+          "input liefert Text – Text + Zahl geht nicht",
+          "alter ist kein gültiger Name",
+          "Es stürzt nicht ab"
+        ],
+        "answer": 1,
+        "explanation": "Man braucht `int(input(...))`."
+      },
+      {
+        "type": "single",
+        "question": "Was fehlt in dieser Zeile? `if punkte > 10`",
+        "options": [
+          "Ein Semikolon",
+          "Ein Doppelpunkt am Ende",
+          "Klammern um punkte",
+          "Nichts"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "text",
+        "question": "Wie oft wird „Funki“ ausgegeben?",
+        "code": "for i in range(2, 7):\n    print(\"Funki\")",
+        "answer": [
+          "5"
+        ],
+        "placeholder": "Zahl",
+        "explanation": "2, 3, 4, 5, 6 – fünf Durchläufe."
+      },
+      {
+        "type": "single",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "n = 10\nwhile n > 0:\n    n = n - 3\nprint(n)",
+        "options": [
+          "0",
+          "1",
+          "-2",
+          "Endlosschleife"
+        ],
+        "answer": 2,
+        "explanation": "10 → 7 → 4 → 1 → -2. Dann ist n nicht mehr > 0."
+      },
+      {
+        "type": "text",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "def mal_drei(x):\n    return x * 3\n\nprint(mal_drei(4) + 1)",
+        "answer": [
+          "13"
+        ],
+        "placeholder": "Ausgabe"
+      },
+      {
+        "type": "single",
+        "question": "Was ist `liste[0]` bei `liste = [5, 8, 2]`?",
+        "options": [
+          "8",
+          "5",
+          "2",
+          "Einen Fehler"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "multiple",
+        "question": "Welche Zeilen sind gültiges Python?",
+        "options": [
+          "print(\"Hallo\")",
+          "zahl = int(\"5\")",
+          "if x = 3:",
+          "for i in range(3):"
+        ],
+        "answer": [
+          0,
+          1,
+          3
+        ],
+        "explanation": "`if x = 3:` ist falsch – zum Vergleichen braucht man `==`."
+      },
+      {
+        "type": "single",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "zahlen = [3, 7, 1]\nzahlen.append(5)\nprint(len(zahlen), max(zahlen))",
+        "options": [
+          "3 7",
+          "4 7",
+          "4 5",
+          "16 7"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "order",
+        "question": "Bring die Zeilen in die richtige Reihenfolge: Die Funktion soll gerade Zahlen erkennen.",
+        "lines": [
+          "def ist_gerade(zahl):",
+          "    return zahl % 2 == 0",
+          "print(ist_gerade(4))"
+        ]
+      }
+    ]
+  }
+}

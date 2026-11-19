@@ -1,0 +1,615 @@
+{
+  "title": "Dein erstes Spiel",
+  "summary": "Steuerung, Sterne, Punkte und Countdown – ein echtes Spiel.",
+  "icon": "gamepad",
+  "tasks": [
+    {
+      "id": "spielstart",
+      "kind": "blocks",
+      "title": "Alles auf Anfang",
+      "difficulty": 1,
+      "instructions": "Jedes Spiel beginnt mit einem sauberen Start. Beim Klick auf ▶ soll: Funki zur **Mitte (0 | 0)** gehen, die Variable **punkte** auf **0** gesetzt werden, der **Stern an eine zufällige Position** springen und **sichtbar** werden.",
+      "toolbox": [
+        "event_flag",
+        "event_key",
+        "event_click",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left",
+        "motion_goto",
+        "motion_goto_random",
+        "motion_change_x",
+        "motion_change_y",
+        "motion_bounce",
+        "motion_point",
+        "looks_say_secs",
+        "looks_say",
+        "looks_color",
+        "looks_set_size",
+        "looks_hide",
+        "looks_show",
+        "looks_background",
+        "control_wait",
+        "control_repeat",
+        "control_forever",
+        "control_if",
+        "control_if_else",
+        "control_repeat_until",
+        "control_stop",
+        "sensing_touching_edge",
+        "sensing_touching_star",
+        "sensing_key",
+        "sensing_timer",
+        "star_random",
+        "star_goto",
+        "star_show",
+        "star_hide",
+        "op_add",
+        "op_sub",
+        "op_random",
+        "op_lt",
+        "op_eq",
+        "op_gt",
+        "op_and",
+        "op_or",
+        "op_not",
+        "op_join",
+        "data_set",
+        "data_change",
+        "data_get"
+      ],
+      "starter": "wenn_start",
+      "stage": {
+        "x": -150,
+        "y": 100,
+        "star": {
+          "x": 0,
+          "y": 0,
+          "visible": false
+        }
+      },
+      "checks": [
+        {
+          "type": "position",
+          "x": 0,
+          "y": 0,
+          "message": "Funki soll beim Start in die Mitte gehen (er ist bei x = {x}, y = {y})."
+        },
+        {
+          "type": "variable",
+          "name": "punkte",
+          "equals": 0,
+          "message": "Setze die Variable punkte auf 0."
+        },
+        {
+          "type": "hasBlock",
+          "block": "star_random",
+          "message": "Der Stern soll an eine zufällige Position springen („setze Stern an zufällige Position“)."
+        },
+        {
+          "type": "state",
+          "path": "star.visible",
+          "equals": true,
+          "message": "Der Stern ist noch unsichtbar – benutze „zeige Stern“."
+        }
+      ],
+      "hints": [
+        "Die Stern-Blöcke findest du in der Kategorie **Stern**.",
+        "gehe zu x: 0 y: 0 → setze punkte auf 0 → setze Stern an zufällige Position → zeige Stern"
+      ],
+      "solution": [
+        "wenn_start",
+        "  gehe_zu 0 0",
+        "  setze punkte 0",
+        "  stern_zufall",
+        "  stern_zeigen"
+      ]
+    },
+    {
+      "id": "spielsteuerung",
+      "kind": "blocks",
+      "title": "Flüssige Steuerung",
+      "difficulty": 2,
+      "instructions": "Baue die Spielschleife: **fortlaufend** prüfen, ob eine **Pfeiltaste** gedrückt ist, und Funki um **6** in diese Richtung bewegen – für **alle vier** Pfeiltasten. (Beim Prüfen werden „rechts“ und dann „oben“ gedrückt gehalten.)",
+      "toolbox": [
+        "event_flag",
+        "event_key",
+        "event_click",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left",
+        "motion_goto",
+        "motion_goto_random",
+        "motion_change_x",
+        "motion_change_y",
+        "motion_bounce",
+        "motion_point",
+        "looks_say_secs",
+        "looks_say",
+        "looks_color",
+        "looks_set_size",
+        "looks_hide",
+        "looks_show",
+        "looks_background",
+        "control_wait",
+        "control_repeat",
+        "control_forever",
+        "control_if",
+        "control_if_else",
+        "control_repeat_until",
+        "control_stop",
+        "sensing_touching_edge",
+        "sensing_touching_star",
+        "sensing_key",
+        "sensing_timer",
+        "star_random",
+        "star_goto",
+        "star_show",
+        "star_hide",
+        "op_add",
+        "op_sub",
+        "op_random",
+        "op_lt",
+        "op_eq",
+        "op_gt",
+        "op_and",
+        "op_or",
+        "op_not",
+        "op_join",
+        "data_set",
+        "data_change",
+        "data_get"
+      ],
+      "starter": [
+        "wenn_start",
+        "  gehe_zu 0 0",
+        "  wiederhole_immer"
+      ],
+      "run": {
+        "steps": [
+          {
+            "flag": true,
+            "ticks": 3
+          },
+          {
+            "key": "rechts",
+            "ticks": 10
+          },
+          {
+            "key": "oben",
+            "ticks": 10
+          }
+        ],
+        "maxTicks": 60
+      },
+      "checks": [
+        {
+          "type": "blockCount",
+          "block": "sensing_key",
+          "min": 4,
+          "message": "Prüfe alle vier Pfeiltasten (du hast {actual} „Taste … gedrückt?“-Blöcke)."
+        },
+        {
+          "type": "position",
+          "x": 60,
+          "y": 60,
+          "tolerance": 13,
+          "message": "Funki landet bei x = {x}, y = {y} – erwartet war etwa x = 60, y = 60."
+        }
+      ],
+      "hints": [
+        "Vier „falls“-Blöcke in die Schleife – je einer pro Pfeiltaste.",
+        "falls ⟨Taste Pfeil nach oben gedrückt?⟩ dann [ ändere y um 6 ] – und genauso für unten (-6), rechts (x +6) und links (x -6)."
+      ],
+      "solution": [
+        "wenn_start",
+        "  gehe_zu 0 0",
+        "  wiederhole_immer",
+        "    falls (taste rechts)",
+        "      ändere_x 6",
+        "    falls (taste links)",
+        "      ändere_x -6",
+        "    falls (taste oben)",
+        "      ändere_y 6",
+        "    falls (taste unten)",
+        "      ändere_y -6"
+      ]
+    },
+    {
+      "id": "einsammeln",
+      "kind": "blocks",
+      "title": "Sterne sammeln",
+      "difficulty": 2,
+      "instructions": "Jetzt wird gesammelt! In der Spielschleife: **Falls** Funki den **Stern berührt**, erhöhe **punkte** um 1 und setze den Stern an eine **zufällige Position**. Der Stern liegt am Anfang direkt neben Funki.",
+      "toolbox": [
+        "event_flag",
+        "event_key",
+        "event_click",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left",
+        "motion_goto",
+        "motion_goto_random",
+        "motion_change_x",
+        "motion_change_y",
+        "motion_bounce",
+        "motion_point",
+        "looks_say_secs",
+        "looks_say",
+        "looks_color",
+        "looks_set_size",
+        "looks_hide",
+        "looks_show",
+        "looks_background",
+        "control_wait",
+        "control_repeat",
+        "control_forever",
+        "control_if",
+        "control_if_else",
+        "control_repeat_until",
+        "control_stop",
+        "sensing_touching_edge",
+        "sensing_touching_star",
+        "sensing_key",
+        "sensing_timer",
+        "star_random",
+        "star_goto",
+        "star_show",
+        "star_hide",
+        "op_add",
+        "op_sub",
+        "op_random",
+        "op_lt",
+        "op_eq",
+        "op_gt",
+        "op_and",
+        "op_or",
+        "op_not",
+        "op_join",
+        "data_set",
+        "data_change",
+        "data_get"
+      ],
+      "starter": [
+        "wenn_start",
+        "  setze punkte 0",
+        "  wiederhole_immer",
+        "    falls (taste rechts)",
+        "      ändere_x 6",
+        "    falls (taste links)",
+        "      ändere_x -6"
+      ],
+      "stage": {
+        "star": {
+          "x": 35,
+          "y": 0
+        }
+      },
+      "run": {
+        "maxTicks": 60
+      },
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "sensing_touching_star",
+          "message": "Prüfe mit „wird Stern berührt?“."
+        },
+        {
+          "type": "hasBlock",
+          "block": "star_random",
+          "message": "Nach dem Einsammeln soll der Stern woandershin springen."
+        },
+        {
+          "type": "variable",
+          "name": "punkte",
+          "min": 1,
+          "message": "Funki hat den Stern berührt, aber punkte ist {actual}. Erhöhst du punkte im „falls“-Block?"
+        }
+      ],
+      "hints": [
+        "Der neue „falls“-Block kommt mit in die Schleife.",
+        "falls ⟨wird Stern berührt?⟩ dann [ ändere punkte um 1, setze Stern an zufällige Position ]"
+      ],
+      "solution": [
+        "wenn_start",
+        "  setze punkte 0",
+        "  wiederhole_immer",
+        "    falls (taste rechts)",
+        "      ändere_x 6",
+        "    falls (taste links)",
+        "      ändere_x -6",
+        "    falls (berührt_stern)",
+        "      ändere punkte 1",
+        "      stern_zufall"
+      ]
+    },
+    {
+      "id": "countdown",
+      "kind": "blocks",
+      "title": "Der Countdown",
+      "difficulty": 3,
+      "instructions": "Baue einen **Countdown** als zweites Programm: Variable **zeit** auf **10** setzen, dann **wiederhole bis zeit = 0**: warte 1 Sekunde und verringere **zeit** um 1. Danach sagt Funki **„Zeit um!“** und das Spiel stoppt.",
+      "toolbox": [
+        "event_flag",
+        "event_key",
+        "event_click",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left",
+        "motion_goto",
+        "motion_goto_random",
+        "motion_change_x",
+        "motion_change_y",
+        "motion_bounce",
+        "motion_point",
+        "looks_say_secs",
+        "looks_say",
+        "looks_color",
+        "looks_set_size",
+        "looks_hide",
+        "looks_show",
+        "looks_background",
+        "control_wait",
+        "control_repeat",
+        "control_forever",
+        "control_if",
+        "control_if_else",
+        "control_repeat_until",
+        "control_stop",
+        "sensing_touching_edge",
+        "sensing_touching_star",
+        "sensing_key",
+        "sensing_timer",
+        "star_random",
+        "star_goto",
+        "star_show",
+        "star_hide",
+        "op_add",
+        "op_sub",
+        "op_random",
+        "op_lt",
+        "op_eq",
+        "op_gt",
+        "op_and",
+        "op_or",
+        "op_not",
+        "op_join",
+        "data_set",
+        "data_change",
+        "data_get"
+      ],
+      "starter": "wenn_start",
+      "run": {
+        "maxTicks": 900
+      },
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "control_repeat_until",
+          "message": "Benutze „wiederhole bis ⟨(zeit) = 0⟩“."
+        },
+        {
+          "type": "variable",
+          "name": "zeit",
+          "equals": 0,
+          "message": "Am Ende ist zeit = {actual}. Es soll bis 0 heruntergezählt werden – „ändere zeit um -1“."
+        },
+        {
+          "type": "said",
+          "text": "Zeit um",
+          "message": "Wenn die Zeit abgelaufen ist, soll Funki „Zeit um!“ sagen."
+        }
+      ],
+      "hints": [
+        "Herunterzählen geht mit „ändere zeit um -1“.",
+        "setze zeit auf 10 → wiederhole bis ⟨(zeit) = 0⟩ [ warte 1, ändere zeit um -1 ] → sage „Zeit um!“ → stoppe alles"
+      ],
+      "solution": [
+        "wenn_start",
+        "  setze zeit 10",
+        "  wiederhole_bis (= zeit 0)",
+        "    warte 1",
+        "    ändere zeit -1",
+        "  sage \"Zeit um!\"",
+        "  stoppe"
+      ]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Warum steht die Steuerung in einer „wiederhole fortlaufend“-Schleife?",
+        "options": [
+          "Damit das Spiel schneller lädt",
+          "Damit ständig geprüft wird, ob eine Taste gedrückt ist",
+          "Damit Funki größer wird",
+          "Das ist egal"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was passiert hier, wenn Funki den Stern berührt?",
+        "blocks": [
+          "wenn_start",
+          "  wiederhole_immer",
+          "    falls (berührt_stern)",
+          "      ändere punkte 1",
+          "      stern_zufall"
+        ],
+        "options": [
+          "Nichts",
+          "Funki bekommt einen Punkt und der Stern springt woandershin",
+          "Das Spiel endet",
+          "Funki springt zum Stern"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was macht „stoppe alles“?",
+        "options": [
+          "Es beendet alle laufenden Programme",
+          "Es macht eine Pause von 1 Sekunde",
+          "Es setzt die Punkte auf 0",
+          "Es versteckt Funki"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "multiple",
+        "question": "Was gehört in den Start eines Spiels?",
+        "options": [
+          "Punkte auf 0 setzen",
+          "Spielfigur an die Startposition",
+          "„stoppe alles“",
+          "Ziel (Stern) platzieren"
+        ],
+        "answer": [
+          0,
+          1,
+          3
+        ],
+        "explanation": "Beim Start wird alles auf Anfang gestellt. „stoppe alles“ gehört ans Ende."
+      },
+      {
+        "type": "text",
+        "question": "zeit startet bei 10. In jeder Runde: warte 1 Sekunde, ändere zeit um -1. Nach wie vielen Sekunden ist zeit = 0?",
+        "answer": [
+          "10",
+          "10 Sekunden"
+        ],
+        "placeholder": "Zahl"
+      }
+    ]
+  },
+  "project": {
+    "title": "Sternenjagd – dein Spiel",
+    "kind": "blocks",
+    "description": "Baue das ganze Spiel zusammen: **Steuerung** mit den Pfeiltasten, **Sterne** einsammeln, **Punkte** zählen und ein **Countdown**. Am Ende sagt Funki, wie viele Punkte du hast. Danach: Speichere es und lass deine Freunde spielen!",
+    "toolbox": [
+      "event_flag",
+      "event_key",
+      "event_click",
+      "motion_move",
+      "motion_turn_right",
+      "motion_turn_left",
+      "motion_goto",
+      "motion_goto_random",
+      "motion_change_x",
+      "motion_change_y",
+      "motion_bounce",
+      "motion_point",
+      "looks_say_secs",
+      "looks_say",
+      "looks_color",
+      "looks_set_size",
+      "looks_hide",
+      "looks_show",
+      "looks_background",
+      "control_wait",
+      "control_repeat",
+      "control_forever",
+      "control_if",
+      "control_if_else",
+      "control_repeat_until",
+      "control_stop",
+      "sensing_touching_edge",
+      "sensing_touching_star",
+      "sensing_key",
+      "sensing_timer",
+      "star_random",
+      "star_goto",
+      "star_show",
+      "star_hide",
+      "op_add",
+      "op_sub",
+      "op_random",
+      "op_lt",
+      "op_eq",
+      "op_gt",
+      "op_and",
+      "op_or",
+      "op_not",
+      "op_join",
+      "data_set",
+      "data_change",
+      "data_get"
+    ],
+    "starter": [
+      "wenn_start",
+      "  gehe_zu 0 0",
+      "  setze punkte 0"
+    ],
+    "requirements": [
+      "Funki lässt sich mit den Pfeiltasten steuern.",
+      "Berührt Funki den Stern, gibt es einen Punkt und der Stern springt weg.",
+      "Ein Countdown beendet das Spiel.",
+      "Am Ende sagt Funki die Punktzahl."
+    ],
+    "checks": [
+      {
+        "type": "hasBlock",
+        "block": "control_forever",
+        "message": "Die Spielschleife braucht „wiederhole fortlaufend“."
+      },
+      {
+        "type": "blockCount",
+        "block": "sensing_key",
+        "min": 2,
+        "message": "Funki soll sich mit Pfeiltasten steuern lassen."
+      },
+      {
+        "type": "hasBlock",
+        "block": "sensing_touching_star",
+        "message": "Prüfe, ob Funki den Stern berührt."
+      },
+      {
+        "type": "hasBlock",
+        "block": "control_stop",
+        "message": "Am Ende des Countdowns soll „stoppe alles“ das Spiel beenden."
+      },
+      {
+        "type": "said",
+        "text": "",
+        "message": "Am Ende soll Funki die Punktzahl sagen."
+      }
+    ],
+    "run": {
+      "maxTicks": 1500
+    },
+    "ideas": [
+      "Mach das Spiel mit „setze Hintergrund auf …“ bunter.",
+      "Je mehr Punkte, desto schneller wird Funki.",
+      "Füge einen Highscore hinzu: eine Variable „rekord“."
+    ],
+    "example": [
+      "wenn_start",
+      "  gehe_zu 0 0",
+      "  setze punkte 0",
+      "  stern_zufall",
+      "  stern_zeigen",
+      "  wiederhole_immer",
+      "    falls (taste rechts)",
+      "      ändere_x 6",
+      "    falls (taste links)",
+      "      ändere_x -6",
+      "    falls (taste oben)",
+      "      ändere_y 6",
+      "    falls (taste unten)",
+      "      ändere_y -6",
+      "    falls (berührt_stern)",
+      "      ändere punkte 1",
+      "      stern_zufall",
+      "",
+      "wenn_start",
+      "  setze zeit 15",
+      "  wiederhole_bis (= zeit 0)",
+      "    warte 1",
+      "    ändere zeit -1",
+      "  sage (verbinde \"Zeit um! Punkte: \" punkte)",
+      "  stoppe"
+    ]
+  }
+}

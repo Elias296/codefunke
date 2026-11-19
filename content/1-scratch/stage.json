@@ -1,0 +1,166 @@
+{
+  "order": 1,
+  "title": "Programmieren mit Blöcken",
+  "short": "Scratch",
+  "subtitle": "Bunte Blöcke, echte Programme",
+  "description": "Hier steckst du Befehle wie Puzzleteile zusammen – so wie in Scratch. Du lässt Funki laufen, malen und sprechen und baust am Ende dein erstes Spiel.",
+  "language": "blocks",
+  "color": "var(--color-stage-scratch)",
+  "icon": "blocks",
+  "status": "verfuegbar",
+  "chapters": [
+    "01-bewegung",
+    "02-schleifen",
+    "03-ereignisse",
+    "04-bedingungen",
+    "05-variablen",
+    "06-spiel"
+  ],
+  "finalTest": {
+    "title": "Abschlusstest: Blöcke",
+    "intro": "Zeig, was du über Bewegung, Schleifen, Ereignisse, Bedingungen und Variablen gelernt hast.",
+    "passScore": 0.7,
+    "questions": [
+      {
+        "type": "single",
+        "question": "Funki startet bei (0 | 0) und schaut nach rechts. Wo ist er am Ende?",
+        "blocks": [
+          "wenn_start",
+          "  gehe 100",
+          "  drehe_links 90",
+          "  gehe 50"
+        ],
+        "options": [
+          "x: 100, y: 50",
+          "x: 50, y: 100",
+          "x: 100, y: -50",
+          "x: 150, y: 0"
+        ],
+        "answer": 0,
+        "explanation": "100 nach rechts, dann nach links drehen (jetzt nach oben) und 50 nach oben."
+      },
+      {
+        "type": "text",
+        "question": "Wie viele Linien malt Funki?",
+        "blocks": [
+          "wenn_start",
+          "  stift_runter",
+          "  wiederhole 5",
+          "    gehe 50",
+          "    drehe_rechts 72"
+        ],
+        "answer": [
+          "5"
+        ],
+        "placeholder": "Zahl",
+        "explanation": "5 Wiederholungen mit je einem „gehe“ – ein Fünfeck."
+      },
+      {
+        "type": "text",
+        "question": "Um wie viel Grad muss sich Funki drehen, um ein Achteck zu malen?",
+        "answer": [
+          "45",
+          "45 Grad",
+          "45°"
+        ],
+        "placeholder": "Zahl",
+        "explanation": "360 ÷ 8 = 45."
+      },
+      {
+        "type": "single",
+        "question": "Welcher Startblock passt zu einem Spiel, das auf die Leertaste reagieren soll?",
+        "options": [
+          "Wenn ▶ angeklickt",
+          "Wenn Taste Leertaste gedrückt",
+          "Wenn Funki angeklickt",
+          "wiederhole fortlaufend"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Funki steht bei x = -30. Was sagt er?",
+        "blocks": [
+          "wenn_start",
+          "  falls (> (x) 0)",
+          "    sage \"rechts\"",
+          "  sonst",
+          "    sage \"links\""
+        ],
+        "options": [
+          "„rechts“",
+          "„links“",
+          "Gar nichts",
+          "Beides"
+        ],
+        "answer": 1,
+        "explanation": "-30 ist nicht größer als 0, also läuft der „sonst“-Teil."
+      },
+      {
+        "type": "text",
+        "question": "Welchen Wert hat punkte am Ende?",
+        "blocks": [
+          "wenn_start",
+          "  setze punkte 10",
+          "  wiederhole 4",
+          "    ändere punkte -2"
+        ],
+        "answer": [
+          "2"
+        ],
+        "placeholder": "Zahl",
+        "explanation": "10 − 4 × 2 = 2."
+      },
+      {
+        "type": "single",
+        "question": "Was passiert, wenn du „falls ⟨wird Rand berührt?⟩“ NICHT in eine Schleife steckst?",
+        "options": [
+          "Es wird nur ein einziges Mal geprüft – ganz am Anfang",
+          "Es wird fortlaufend geprüft",
+          "Funki stoppt am Rand",
+          "Das Programm stürzt ab"
+        ],
+        "answer": 0,
+        "explanation": "Ohne Schleife läuft jeder Block nur einmal."
+      },
+      {
+        "type": "multiple",
+        "question": "Welche Aussagen über Variablen stimmen?",
+        "options": [
+          "Eine Variable hat einen Namen",
+          "„ändere … um 1“ zählt 1 dazu",
+          "„setze … auf 5“ zählt 5 dazu",
+          "Man kann Variablen in andere Blöcke stecken"
+        ],
+        "answer": [
+          0,
+          1,
+          3
+        ],
+        "explanation": "„setze“ ersetzt den Wert – es zählt nichts dazu."
+      },
+      {
+        "type": "single",
+        "question": "Welcher Block lässt ein Programm immer weiterlaufen, bis man Stopp drückt?",
+        "options": [
+          "wiederhole 10 mal",
+          "wiederhole fortlaufend",
+          "falls … dann",
+          "warte 1 Sekunde"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "order",
+        "question": "Bring den Countdown in die richtige Reihenfolge.",
+        "lines": [
+          "setze zeit auf 10",
+          "wiederhole bis ⟨zeit = 0⟩",
+          "    warte 1 Sekunde",
+          "    ändere zeit um -1",
+          "sage „Zeit um!“"
+        ]
+      }
+    ]
+  }
+}

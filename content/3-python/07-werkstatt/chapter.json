@@ -1,0 +1,351 @@
+{
+  "title": "Projekt-Werkstatt",
+  "summary": "Zufall, Planung und kleine Spiele aus allen Bausteinen.",
+  "icon": "rocket",
+  "tasks": [
+    {
+      "id": "wuerfel",
+      "title": "Der Würfel",
+      "difficulty": 1,
+      "instructions": "Importiere das Modul `random`, würfle eine Zahl von **1 bis 6** in die Variable `wurf` und gib sie aus.",
+      "starter": "# import ...\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "import\\s+random",
+          "message": "Hol dir das Modul mit `import random`."
+        },
+        {
+          "type": "code",
+          "pattern": "randint\\(\\s*1\\s*,\\s*6\\s*\\)",
+          "message": "Würfle mit `random.randint(1, 6)`."
+        },
+        {
+          "type": "assert",
+          "code": "assert 1 <= wurf <= 6",
+          "message": "`wurf` soll zwischen 1 und 6 liegen."
+        },
+        {
+          "type": "assert",
+          "code": "assert __output__.strip() == str(wurf)",
+          "message": "Gib nur die gewürfelte Zahl aus: `print(wurf)`."
+        }
+      ],
+      "hints": [
+        "Erste Zeile: `import random`.",
+        "`wurf = random.randint(1, 6)` und dann `print(wurf)`."
+      ],
+      "solution": [
+        "import random",
+        "",
+        "wurf = random.randint(1, 6)",
+        "print(wurf)"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "kompliment",
+      "title": "Kompliment-Automat",
+      "difficulty": 2,
+      "instructions": "Erstelle eine Liste `komplimente` mit mindestens **drei** netten Sätzen. Wähle mit `random.choice` einen zufälligen aus und gib ihn so aus: **Funki sagt: …**",
+      "starter": [
+        "import random",
+        "",
+        "komplimente = []"
+      ],
+      "checks": [
+        {
+          "type": "assert",
+          "code": "assert isinstance(komplimente, list) and len(komplimente) >= 3",
+          "message": "Die Liste `komplimente` braucht mindestens 3 Einträge."
+        },
+        {
+          "type": "code",
+          "pattern": "random\\.choice\\(\\s*komplimente\\s*\\)",
+          "message": "Wähle mit `random.choice(komplimente)` zufällig aus."
+        },
+        {
+          "type": "assert",
+          "code": "line = __output__.strip()\nassert line.startswith('Funki sagt: ') and line[len('Funki sagt: '):] in komplimente",
+          "message": "Die Ausgabe soll so aussehen: „Funki sagt: …“ mit einem Kompliment aus deiner Liste."
+        }
+      ],
+      "hints": [
+        "Eine Liste mit Texten: `[\"Du bist klug!\", \"Du bist lustig!\", \"Du gibst nie auf!\"]`",
+        "`print(f\"Funki sagt: {random.choice(komplimente)}\")`"
+      ],
+      "solution": [
+        "import random",
+        "",
+        "komplimente = [\"Du bist klug!\", \"Du bist lustig!\", \"Du gibst nie auf!\"]",
+        "print(f\"Funki sagt: {random.choice(komplimente)}\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "zahlenraten",
+      "title": "Zahlenraten mit Tipps",
+      "difficulty": 3,
+      "instructions": "Zum Testen ist die Geheimzahl **13**. Frag in einer Schleife nach Tipps. Gib **Zu klein!** oder **Zu groß!** aus, bis die Zahl erraten ist. Dann: **Richtig! Du hast N Versuche gebraucht.** (N = Anzahl der Versuche)",
+      "starter": [
+        "geheim = 13",
+        "versuche = 0"
+      ],
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "\\bwhile\\b",
+          "message": "Benutze eine `while`-Schleife."
+        },
+        {
+          "type": "assert",
+          "inputs": [
+            "5",
+            "20",
+            "13"
+          ],
+          "code": "assert 'Zu klein!' in __output__ and 'Zu groß!' in __output__",
+          "message": "Bei 5 soll „Zu klein!“ und bei 20 „Zu groß!“ erscheinen."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "5",
+            "20",
+            "13"
+          ],
+          "expected": "Richtig! Du hast 3 Versuche gebraucht.",
+          "match": "contains",
+          "message": "Nach drei Versuchen soll erscheinen: „Richtig! Du hast 3 Versuche gebraucht.“ – zählst du `versuche` hoch?"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "13"
+          ],
+          "expected": "Richtig! Du hast 1 Versuche gebraucht.",
+          "match": "contains",
+          "message": "Wer gleich richtig rät, soll „Richtig! Du hast 1 Versuche gebraucht.“ sehen."
+        }
+      ],
+      "hints": [
+        "`while True:` mit `break`, wenn richtig geraten wurde – oder `while tipp != geheim:`.",
+        "In der Schleife: tipp einlesen, `versuche += 1`, dann `if tipp < geheim` / `elif tipp > geheim` / `else` mit Ausgabe und `break`."
+      ],
+      "solution": [
+        "geheim = 13",
+        "versuche = 0",
+        "",
+        "while True:",
+        "    tipp = int(input(\"Dein Tipp: \"))",
+        "    versuche += 1",
+        "    if tipp < geheim:",
+        "        print(\"Zu klein!\")",
+        "    elif tipp > geheim:",
+        "        print(\"Zu groß!\")",
+        "    else:",
+        "        print(f\"Richtig! Du hast {versuche} Versuche gebraucht.\")",
+        "        break"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "miniquiz",
+      "title": "Quiz mit Listen",
+      "difficulty": 3,
+      "instructions": "Die Fragen und Antworten stehen schon in zwei Listen. Stell alle Fragen in einer **Schleife**, zähl die richtigen Antworten (Groß/Klein egal – Tipp: `.lower()`) und gib am Ende aus: **Du hast X von 3 Punkten.**",
+      "starter": [
+        "fragen = [\"Wie viele Beine hat eine Spinne?\", \"Was ist 7 * 6?\", \"Welche Farbe hat der Himmel?\"]",
+        "antworten = [\"8\", \"42\", \"blau\"]",
+        "punkte = 0"
+      ],
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "\\bfor\\b|\\bwhile\\b",
+          "message": "Stell die Fragen in einer Schleife – nicht jede einzeln."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "8",
+            "42",
+            "grün"
+          ],
+          "expected": "Du hast 2 von 3 Punkten.",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "8",
+            "42",
+            "Blau"
+          ],
+          "expected": "Du hast 3 von 3 Punkten.",
+          "match": "contains",
+          "message": "„Blau“ mit großem B soll auch zählen – vergleiche mit `.lower()`."
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "1",
+            "2",
+            "3"
+          ],
+          "expected": "Du hast 0 von 3 Punkten.",
+          "match": "contains"
+        }
+      ],
+      "hints": [
+        "`for i in range(len(fragen)):` – dann ist `fragen[i]` die Frage und `antworten[i]` die passende Antwort.",
+        "In der Schleife: `antwort = input(fragen[i] + \" \")` → `if antwort.lower() == antworten[i]: punkte += 1`. Danach die Ausgabe mit f-String."
+      ],
+      "solution": [
+        "fragen = [\"Wie viele Beine hat eine Spinne?\", \"Was ist 7 * 6?\", \"Welche Farbe hat der Himmel?\"]",
+        "antworten = [\"8\", \"42\", \"blau\"]",
+        "punkte = 0",
+        "",
+        "for i in range(len(fragen)):",
+        "    antwort = input(fragen[i] + \" \")",
+        "    if antwort.lower() == antworten[i]:",
+        "        punkte += 1",
+        "",
+        "print(f\"Du hast {punkte} von {len(fragen)} Punkten.\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Wie holst du das Modul für Zufallszahlen in dein Programm?",
+        "options": [
+          "include random",
+          "import random",
+          "use random",
+          "random()"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Welche Zahlen kann `random.randint(1, 3)` liefern?",
+        "options": [
+          "1 und 2",
+          "1, 2 und 3",
+          "0, 1, 2 und 3",
+          "Nur 3"
+        ],
+        "answer": 1,
+        "explanation": "Bei randint sind beide Grenzen dabei."
+      },
+      {
+        "type": "single",
+        "question": "Was macht `random.choice(liste)`?",
+        "options": [
+          "Sortiert die Liste",
+          "Wählt einen zufälligen Eintrag aus",
+          "Mischt die Liste",
+          "Löscht einen Eintrag"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "order",
+        "question": "Bring die Schritte beim Programmieren in eine sinnvolle Reihenfolge.",
+        "lines": [
+          "Überlegen: Was soll das Programm tun?",
+          "Ein kleines Stück programmieren",
+          "Ausführen und testen",
+          "Fehler reparieren, dann das nächste Stück"
+        ]
+      },
+      {
+        "type": "single",
+        "question": "Warum setzt man beim Testen den Zufall manchmal fest (z. B. `geheim = 13`)?",
+        "options": [
+          "Weil Zufall verboten ist",
+          "Damit man das Programm jedes Mal gleich testen kann",
+          "Damit das Programm schneller ist",
+          "Das macht man nie"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "project": {
+    "title": "Schere, Stein, Papier",
+    "kind": "code",
+    "language": "python",
+    "description": "Programmiere **Schere, Stein, Papier** gegen den Computer! Es gibt **3 Runden**. In jeder Runde gibst du deine Wahl ein, der Computer wählt zufällig. Das Programm sagt, wer gewonnen hat, und zählt die Punkte. Am Ende verkündet es den Sieger.",
+    "starter": [
+      "import random",
+      "",
+      "moeglichkeiten = [\"schere\", \"stein\", \"papier\"]"
+    ],
+    "requirements": [
+      "Der Computer wählt zufällig.",
+      "Es gibt 3 Runden (Schleife!).",
+      "Das Programm erkennt Sieg, Niederlage und Unentschieden.",
+      "Am Ende wird der Gesamtsieger verkündet."
+    ],
+    "checks": [
+      {
+        "type": "code",
+        "pattern": "random\\.(choice|randint)",
+        "message": "Der Computer soll zufällig wählen – mit `random.choice(moeglichkeiten)`."
+      },
+      {
+        "type": "code",
+        "pattern": "\\bfor\\b|\\bwhile\\b",
+        "message": "Benutze eine Schleife für die 3 Runden."
+      },
+      {
+        "type": "noError",
+        "inputs": [
+          "schere",
+          "stein",
+          "papier"
+        ]
+      }
+    ],
+    "ideas": [
+      "Schreib eine Funktion `gewinner(ich, computer)`, die „ich“, „computer“ oder „unentschieden“ zurückgibt.",
+      "Erweitere das Spiel um „Echse“ und „Spock“!"
+    ],
+    "example": [
+      "import random",
+      "",
+      "moeglichkeiten = [\"schere\", \"stein\", \"papier\"]",
+      "schlaegt = {\"schere\": \"papier\", \"stein\": \"schere\", \"papier\": \"stein\"}",
+      "ich_punkte = 0",
+      "pc_punkte = 0",
+      "",
+      "for runde in range(1, 4):",
+      "    ich = input(f\"Runde {runde} – schere, stein oder papier? \").lower()",
+      "    pc = random.choice(moeglichkeiten)",
+      "    print(f\"Computer wählt: {pc}\")",
+      "    if ich == pc:",
+      "        print(\"Unentschieden!\")",
+      "    elif schlaegt.get(ich) == pc:",
+      "        print(\"Du gewinnst die Runde!\")",
+      "        ich_punkte += 1",
+      "    else:",
+      "        print(\"Der Computer gewinnt die Runde.\")",
+      "        pc_punkte += 1",
+      "",
+      "if ich_punkte > pc_punkte:",
+      "    print(\"Du hast gewonnen!\")",
+      "elif ich_punkte < pc_punkte:",
+      "    print(\"Der Computer hat gewonnen.\")",
+      "else:",
+      "    print(\"Gleichstand!\")"
+    ]
+  }
+}

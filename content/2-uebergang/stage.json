@@ -1,0 +1,17 @@
+{
+  "order": 2,
+  "title": "Von Blöcken zu Text",
+  "short": "Übergang",
+  "subtitle": "Gleicher Code, zwei Schreibweisen",
+  "description": "Du siehst deine Block-Programme direkt als Python-Text daneben. So merkst du: Text-Code ist gar nicht so anders!",
+  "language": "blocks",
+  "color": "var(--color-stage-bridge)",
+  "icon": "shuffle",
+  "status": "bald",
+  "planned": [
+    { "title": "Blöcke lesen wie Text", "summary": "Jeder Block wird zu einer Zeile Python." },
+    { "title": "Einrückung statt Klammern", "summary": "Warum Python Leerzeichen so wichtig nimmt." },
+    { "title": "Variablen in Text", "summary": "setze punkte auf 0 → punkte = 0" },
+    { "title": "Dein erstes Text-Programm", "summary": "Ein Block-Spiel in Python nachbauen." }
+  ]
+}

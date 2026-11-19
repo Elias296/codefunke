@@ -1,0 +1,466 @@
+{
+  "title": "Ereignisse",
+  "summary": "Reagiere auf Tasten und Klicks – Funki wird steuerbar.",
+  "icon": "keyboard",
+  "tasks": [
+    {
+      "id": "pfeil-rechts",
+      "kind": "blocks",
+      "title": "Pfeil nach rechts",
+      "difficulty": 1,
+      "instructions": "Wenn die **Pfeiltaste nach rechts** gedrückt wird, soll Funki **10 Schritte nach rechts** rücken. Benutze „Wenn Taste … gedrückt“ und „ändere x um 10“. Beim Prüfen drückt Funki die Taste dreimal.",
+      "toolbox": [
+        "event_flag",
+        "event_key",
+        "event_click",
+        "motion_move",
+        "motion_change_x",
+        "motion_change_y",
+        "motion_turn_right",
+        "looks_say_secs",
+        "looks_say",
+        "looks_color"
+      ],
+      "starter": "",
+      "run": {
+        "steps": [
+          {
+            "key": "rechts",
+            "ticks": 2
+          },
+          {
+            "key": "rechts",
+            "ticks": 2
+          },
+          {
+            "key": "rechts",
+            "ticks": 2
+          }
+        ]
+      },
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "event_key",
+          "message": "Du brauchst den Startblock „Wenn Taste … gedrückt“ aus **Ereignisse**."
+        },
+        {
+          "type": "position",
+          "x": 30,
+          "y": 0,
+          "message": "Nach 3 Tastendrücken steht Funki bei x = {x}. Er soll bei x = 30 sein (3 × 10). Hast du „Pfeil nach rechts“ eingestellt?"
+        }
+      ],
+      "hints": [
+        "In „Wenn Taste … gedrückt“ kannst du die Taste aussuchen: „Pfeil nach rechts“.",
+        "Wenn Taste [Pfeil nach rechts] gedrückt → ändere x um 10"
+      ],
+      "solution": [
+        "wenn_taste rechts",
+        "  ändere_x 10"
+      ]
+    },
+    {
+      "id": "vier-richtungen",
+      "kind": "blocks",
+      "title": "Alle vier Richtungen",
+      "difficulty": 2,
+      "instructions": "Mach Funki mit **allen vier Pfeiltasten** steuerbar – jeweils **10 Schritte**. Oben und unten funktionieren mit „ändere y um …“. Beim Prüfen drückt Funki: rechts, rechts, oben, links.",
+      "toolbox": [
+        "event_flag",
+        "event_key",
+        "event_click",
+        "motion_move",
+        "motion_change_x",
+        "motion_change_y",
+        "motion_turn_right",
+        "looks_say_secs",
+        "looks_say",
+        "looks_color"
+      ],
+      "starter": [
+        "wenn_taste rechts",
+        "  ändere_x 10"
+      ],
+      "run": {
+        "steps": [
+          {
+            "key": "rechts",
+            "ticks": 2
+          },
+          {
+            "key": "rechts",
+            "ticks": 2
+          },
+          {
+            "key": "oben",
+            "ticks": 2
+          },
+          {
+            "key": "links",
+            "ticks": 2
+          },
+          {
+            "key": "unten",
+            "ticks": 2
+          },
+          {
+            "key": "oben",
+            "ticks": 2
+          }
+        ]
+      },
+      "checks": [
+        {
+          "type": "blockCount",
+          "block": "event_key",
+          "min": 4,
+          "message": "Du brauchst vier Startblöcke „Wenn Taste … gedrückt“ – einen pro Pfeiltaste."
+        },
+        {
+          "type": "position",
+          "x": 10,
+          "y": 10,
+          "message": "Funki landet bei x = {x}, y = {y} – erwartet war x = 10, y = 10. Prüfe die Vorzeichen: links und unten brauchen ein Minus."
+        }
+      ],
+      "hints": [
+        "Nach oben: „ändere y um 10“. Nach unten: „ändere y um -10“.",
+        "Vier Startblöcke: rechts → ändere x um 10, links → ändere x um -10, oben → ändere y um 10, unten → ändere y um -10."
+      ],
+      "solution": [
+        "wenn_taste rechts",
+        "  ändere_x 10",
+        "",
+        "wenn_taste links",
+        "  ändere_x -10",
+        "",
+        "wenn_taste oben",
+        "  ändere_y 10",
+        "",
+        "wenn_taste unten",
+        "  ändere_y -10"
+      ]
+    },
+    {
+      "id": "kitzeln",
+      "kind": "blocks",
+      "title": "Klick mich!",
+      "difficulty": 1,
+      "instructions": "Wenn jemand auf Funki **klickt**, soll er **„Hihi, das kitzelt!“** sagen.",
+      "toolbox": [
+        "event_flag",
+        "event_key",
+        "event_click",
+        "motion_move",
+        "motion_change_x",
+        "motion_change_y",
+        "motion_turn_right",
+        "looks_say_secs",
+        "looks_say",
+        "looks_color"
+      ],
+      "starter": "",
+      "run": {
+        "steps": [
+          {
+            "click": true,
+            "ticks": 5
+          }
+        ]
+      },
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "event_click",
+          "message": "Nimm den Startblock „Wenn Funki angeklickt“."
+        },
+        {
+          "type": "said",
+          "text": "kitzelt",
+          "message": "Funki soll „Hihi, das kitzelt!“ sagen."
+        }
+      ],
+      "hints": [
+        "Der Startblock „Wenn Funki angeklickt“ ist bei **Ereignisse**.",
+        "Wenn Funki angeklickt → sage „Hihi, das kitzelt!“ für 2 Sekunden"
+      ],
+      "solution": [
+        "wenn_angeklickt",
+        "  sage_für \"Hihi, das kitzelt!\" 2"
+      ]
+    },
+    {
+      "id": "schwindelig",
+      "kind": "blocks",
+      "title": "Zwei Programme zugleich",
+      "difficulty": 2,
+      "instructions": "Baue **zwei** Programme: 1) Beim Start dreht sich Funki **fortlaufend** im Kreis (um 5 Grad pro Runde). 2) Wenn die **Leertaste** gedrückt wird, sagt er **„Mir ist schwindelig!“**.",
+      "toolbox": [
+        "event_flag",
+        "event_key",
+        "event_click",
+        "motion_turn_right",
+        "control_forever",
+        "control_repeat",
+        "looks_say_secs",
+        "looks_say"
+      ],
+      "starter": "wenn_start",
+      "run": {
+        "steps": [
+          {
+            "flag": true,
+            "ticks": 30
+          },
+          {
+            "key": "leertaste",
+            "ticks": 10
+          }
+        ],
+        "maxTicks": 120
+      },
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "control_forever",
+          "message": "Für das Drehen ohne Ende brauchst du „wiederhole fortlaufend“."
+        },
+        {
+          "type": "hasBlock",
+          "block": "event_key",
+          "message": "Für die Leertaste brauchst du einen zweiten Startblock „Wenn Taste Leertaste gedrückt“."
+        },
+        {
+          "type": "said",
+          "text": "schwindelig",
+          "message": "Wenn die Leertaste gedrückt wird, soll Funki „Mir ist schwindelig!“ sagen."
+        }
+      ],
+      "hints": [
+        "Ein Startblock für das Drehen, ein zweiter für die Leertaste.",
+        "Wenn ▶ angeklickt → wiederhole fortlaufend [ drehe dich um 5 Grad ]. Und: Wenn Taste Leertaste gedrückt → sage …"
+      ],
+      "solution": [
+        "wenn_start",
+        "  wiederhole_immer",
+        "    drehe_rechts 5",
+        "",
+        "wenn_taste leertaste",
+        "  sage_für \"Mir ist schwindelig!\" 2"
+      ]
+    },
+    {
+      "id": "huepfen",
+      "kind": "blocks",
+      "title": "Hüpf, Funki!",
+      "difficulty": 3,
+      "instructions": "Beim Start stellt sich Funki auf **x: 0, y: -100**. Wenn die **Leertaste** gedrückt wird, **hüpft** er: 60 nach oben, kurz **warten** (0.3 Sekunden), dann wieder 60 nach unten.",
+      "toolbox": [
+        "event_flag",
+        "event_key",
+        "motion_goto",
+        "motion_change_x",
+        "motion_change_y",
+        "control_wait",
+        "looks_say_secs"
+      ],
+      "starter": "wenn_start",
+      "stage": {
+        "grid": true
+      },
+      "run": {
+        "steps": [
+          {
+            "flag": true,
+            "ticks": 5
+          },
+          {
+            "key": "leertaste",
+            "ticks": 5
+          }
+        ]
+      },
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "control_wait",
+          "message": "Ohne „warte“ geht der Sprung so schnell, dass man ihn nicht sieht. Nimm „warte 0.3 Sekunden“."
+        },
+        {
+          "type": "blockCount",
+          "block": "motion_change_y",
+          "min": 2,
+          "message": "Für das Hüpfen brauchst du zweimal „ändere y um …“: einmal hoch, einmal runter."
+        },
+        {
+          "type": "position",
+          "x": 0,
+          "y": -100,
+          "message": "Nach dem Hüpfen soll Funki wieder bei y = -100 landen (er ist bei y = {y})."
+        }
+      ],
+      "hints": [
+        "Hoch ist „ändere y um 60“, runter ist „ändere y um -60“.",
+        "Wenn ▶ angeklickt → gehe zu x: 0 y: -100. Und: Wenn Taste Leertaste gedrückt → ändere y um 60 → warte 0.3 → ändere y um -60"
+      ],
+      "solution": [
+        "wenn_start",
+        "  gehe_zu 0 -100",
+        "",
+        "wenn_taste leertaste",
+        "  ändere_y 60",
+        "  warte 0.3",
+        "  ändere_y -60"
+      ]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Was ist ein Ereignis?",
+        "options": [
+          "Ein Fehler im Programm",
+          "Etwas, das passiert – zum Beispiel ein Klick oder Tastendruck",
+          "Eine besonders lange Schleife",
+          "Eine Farbe"
+        ],
+        "answer": 1,
+        "explanation": "Ereignisse sind Dinge, die passieren. Startblöcke warten darauf."
+      },
+      {
+        "type": "single",
+        "question": "Welcher Block startet ein Programm, wenn man auf Funki klickt?",
+        "options": [
+          "Wenn ▶ angeklickt",
+          "Wenn Taste Leertaste gedrückt",
+          "Wenn Funki angeklickt",
+          "wiederhole fortlaufend"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "single",
+        "question": "Was passiert, wenn du die Leertaste drückst?",
+        "blocks": [
+          "wenn_taste leertaste",
+          "  ändere_y 20"
+        ],
+        "options": [
+          "Funki geht 20 nach rechts",
+          "Funki geht 20 nach oben",
+          "Funki geht 20 nach unten",
+          "Nichts"
+        ],
+        "answer": 1,
+        "explanation": "y ist die Höhe. „ändere y um 20“ bewegt Funki nach oben."
+      },
+      {
+        "type": "single",
+        "question": "Können zwei Programme mit verschiedenen Startblöcken gleichzeitig laufen?",
+        "options": [
+          "Ja",
+          "Nein, nur eins nach dem anderen"
+        ],
+        "answer": 0,
+        "explanation": "Jeder Startblock startet sein eigenes Programm – sie laufen gleichzeitig."
+      },
+      {
+        "type": "multiple",
+        "question": "Welche dieser Blöcke sind Startblöcke?",
+        "options": [
+          "Wenn ▶ angeklickt",
+          "gehe 10 Schritte",
+          "Wenn Taste … gedrückt",
+          "Wenn Funki angeklickt",
+          "warte 1 Sekunde"
+        ],
+        "answer": [
+          0,
+          2,
+          3
+        ],
+        "explanation": "Startblöcke haben oben eine runde Kappe und warten auf ein Ereignis."
+      }
+    ]
+  },
+  "project": {
+    "title": "Funki-Fernsteuerung",
+    "kind": "blocks",
+    "description": "Bau eine Fernsteuerung für Funki! Mit den **Pfeiltasten** fährt er über die Bühne, mit der **Leertaste** sagt er etwas Lustiges und wenn man ihn **anklickt**, ändert er seine Farbe.",
+    "toolbox": [
+      "event_flag",
+      "event_key",
+      "event_click",
+      "motion_move",
+      "motion_turn_right",
+      "motion_turn_left",
+      "motion_change_x",
+      "motion_change_y",
+      "motion_goto",
+      "motion_point",
+      "looks_say_secs",
+      "looks_say",
+      "looks_color",
+      "looks_change_size",
+      "control_wait",
+      "pen_down",
+      "pen_up",
+      "pen_color"
+    ],
+    "starter": [
+      "wenn_start",
+      "  gehe_zu 0 0"
+    ],
+    "requirements": [
+      "Alle vier Pfeiltasten bewegen Funki.",
+      "Die Leertaste lässt Funki etwas sagen.",
+      "Ein Klick auf Funki ändert seine Farbe."
+    ],
+    "checks": [
+      {
+        "type": "blockCount",
+        "block": "event_key",
+        "min": 5,
+        "message": "Du brauchst 5 Tasten-Startblöcke: 4 Pfeiltasten und die Leertaste."
+      },
+      {
+        "type": "hasBlock",
+        "block": "event_click",
+        "message": "Es fehlt „Wenn Funki angeklickt“."
+      },
+      {
+        "type": "hasBlock",
+        "block": "looks_color",
+        "message": "Beim Anklicken soll sich Funkis Farbe ändern („setze Farbe auf …“)."
+      }
+    ],
+    "ideas": [
+      "Mit „Stift runter“ hinterlässt Funki eine Spur – so wird es ein Zeichenprogramm!",
+      "Lass Funki mit einer weiteren Taste wachsen."
+    ],
+    "example": [
+      "wenn_start",
+      "  gehe_zu 0 0",
+      "",
+      "wenn_taste rechts",
+      "  ändere_x 10",
+      "",
+      "wenn_taste links",
+      "  ändere_x -10",
+      "",
+      "wenn_taste oben",
+      "  ändere_y 10",
+      "",
+      "wenn_taste unten",
+      "  ändere_y -10",
+      "",
+      "wenn_taste leertaste",
+      "  sage_für \"Brumm brumm!\" 1",
+      "",
+      "wenn_angeklickt",
+      "  farbe grün"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "order": 6,
+  "title": "Java",
+  "short": "Java",
+  "subtitle": "Klassen, Objekte und große Projekte",
+  "description": "Java ist eine streng typisierte Sprache für große Programme – und der Einstieg in die Objektorientierung.",
+  "language": "java",
+  "color": "var(--color-stage-java)",
+  "icon": "coffee",
+  "status": "bald",
+  "planned": [
+    { "title": "Typen und Variablen", "summary": "int, double, String, boolean." },
+    { "title": "Klassen und Objekte", "summary": "Baupläne und die Dinge, die daraus entstehen." },
+    { "title": "Methoden und Konstruktoren", "summary": "Was Objekte können." },
+    { "title": "Vererbung", "summary": "Objektorientierung richtig nutzen." },
+    { "title": "Abschlussprojekt", "summary": "Ein kleines Textabenteuer in Java." }
+  ]
+}

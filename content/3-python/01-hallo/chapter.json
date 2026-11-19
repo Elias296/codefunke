@@ -1,0 +1,251 @@
+{
+  "title": "Hallo, Python!",
+  "summary": "print, Text, Zahlen und dein erstes Programm.",
+  "icon": "prompt",
+  "tasks": [
+    {
+      "id": "hallo-welt",
+      "title": "Hallo, Welt!",
+      "difficulty": 1,
+      "instructions": "Die Tradition will es so: Das erste Programm in einer neuen Sprache gibt **Hallo, Welt!** aus. Schreib es genau so – mit Komma und Ausrufezeichen.",
+      "starter": "# Schreib deinen Code unter diese Zeile\n",
+      "checks": [
+        {
+          "type": "output",
+          "expected": "Hallo, Welt!"
+        }
+      ],
+      "hints": [
+        "Du brauchst `print` mit runden Klammern und den Text in Anführungszeichen.",
+        "So sieht es aus: `print(\"Hallo, Welt!\")`"
+      ],
+      "solution": "print(\"Hallo, Welt!\")",
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "drei-zeilen",
+      "title": "Drei Zeilen",
+      "difficulty": 1,
+      "instructions": "Gib diese drei Zeilen aus – jede mit einem eigenen `print`:\n\n```output\nIch lerne Python.\nDas macht Spaß!\nFunki hilft mir.\n```",
+      "starter": "print(\"Ich lerne Python.\")\n",
+      "checks": [
+        {
+          "type": "output",
+          "expected": [
+            "Ich lerne Python.",
+            "Das macht Spaß!",
+            "Funki hilft mir."
+          ]
+        }
+      ],
+      "hints": [
+        "Die erste Zeile steht schon da. Schreib darunter zwei weitere `print`-Befehle.",
+        "Zeile 2: `print(\"Das macht Spaß!\")` – Zeile 3 genauso mit „Funki hilft mir.“"
+      ],
+      "solution": [
+        "print(\"Ich lerne Python.\")",
+        "print(\"Das macht Spaß!\")",
+        "print(\"Funki hilft mir.\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "rechnen",
+      "title": "Der Taschenrechner",
+      "difficulty": 1,
+      "instructions": "Was ist **17 mal 23**? Rechne nicht selbst – lass Python das Ergebnis ausgeben!",
+      "starter": "# Lass Python rechnen\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "17\\s*\\*\\s*23|23\\s*\\*\\s*17",
+          "message": "Lass Python rechnen: Schreib `17 * 23` in das `print`."
+        },
+        {
+          "type": "output",
+          "expected": "391"
+        }
+      ],
+      "hints": [
+        "Mal-Rechnen geht in Python mit dem Sternchen `*`.",
+        "`print(17 * 23)` – ohne Anführungszeichen, sonst wird es Text!"
+      ],
+      "solution": "print(17 * 23)",
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "fehlersuche",
+      "title": "Fehlerjagd",
+      "difficulty": 2,
+      "instructions": "In diesem Programm haben sich **drei Fehler** versteckt. Führ es aus, lies die Fehlermeldungen und repariere alles. Am Ende soll es ausgeben:\n\n```output\nIch bin ein Programm.\nFunki ist toll!\nFertig!\n```",
+      "starter": [
+        "print(\"Ich bin ein Programm.)",
+        "print(Funki ist toll!\")",
+        "prnt(\"Fertig!\")"
+      ],
+      "checks": [
+        {
+          "type": "output",
+          "expected": [
+            "Ich bin ein Programm.",
+            "Funki ist toll!",
+            "Fertig!"
+          ]
+        }
+      ],
+      "hints": [
+        "Prüfe jede Zeile: Hat jeder Text ein Anführungszeichen am Anfang UND am Ende? Ist `print` richtig geschrieben?",
+        "Zeile 1: Anführungszeichen vor `)` fehlt. Zeile 2: Anführungszeichen nach `(` fehlt. Zeile 3: `prnt` → `print`."
+      ],
+      "solution": [
+        "print(\"Ich bin ein Programm.\")",
+        "print(\"Funki ist toll!\")",
+        "print(\"Fertig!\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "minuten",
+      "title": "Wie viele Minuten?",
+      "difficulty": 2,
+      "instructions": "Ein Tag hat 24 Stunden, jede Stunde 60 Minuten. Gib aus: **Ein Tag hat 1440 Minuten.** Die Zahl soll Python ausrechnen (`24 * 60`). Tipp: Benutze in `print` Kommas, um Text und Rechnung zu verbinden.",
+      "starter": "print(\"Ein Tag hat\", ...)\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "24\\s*\\*\\s*60|60\\s*\\*\\s*24",
+          "message": "Lass Python `24 * 60` ausrechnen, statt 1440 selbst hinzuschreiben."
+        },
+        {
+          "type": "output",
+          "expected": "Ein Tag hat 1440 Minuten."
+        }
+      ],
+      "hints": [
+        "Mit Kommas trennst du die Teile: Text, Rechnung, Text.",
+        "`print(\"Ein Tag hat\", 24 * 60, \"Minuten.\")` – Python setzt die Leerzeichen selbst."
+      ],
+      "solution": "print(\"Ein Tag hat\", 24 * 60, \"Minuten.\")",
+      "kind": "code",
+      "language": "python"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Was macht `print`?",
+        "options": [
+          "Es druckt auf Papier",
+          "Es zeigt etwas in der Ausgabe an",
+          "Es löscht das Programm",
+          "Es rechnet nur"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "print(3 + 4 * 2)",
+        "options": [
+          "14",
+          "11",
+          "3 + 4 * 2",
+          "10"
+        ],
+        "answer": 1,
+        "explanation": "Punkt vor Strich: 4 * 2 = 8, dann 3 + 8 = 11."
+      },
+      {
+        "type": "text",
+        "question": "Was gibt `print(10 // 3)` aus?",
+        "answer": [
+          "3"
+        ],
+        "placeholder": "Ausgabe",
+        "explanation": "`//` teilt ganzzahlig: 10 geteilt durch 3 ist 3 Rest 1."
+      },
+      {
+        "type": "single",
+        "question": "Welche Zeile ist richtig?",
+        "options": [
+          "Print(\"Hallo\")",
+          "print(\"Hallo\")",
+          "print(Hallo)",
+          "print \"Hallo\""
+        ],
+        "answer": 1,
+        "explanation": "Kleines `print`, runde Klammern, Text in Anführungszeichen."
+      },
+      {
+        "type": "single",
+        "question": "Was passiert mit allem hinter einem `#`?",
+        "options": [
+          "Es wird groß geschrieben",
+          "Python ignoriert es – es ist ein Kommentar",
+          "Es wird zweimal ausgeführt",
+          "Es erzeugt einen Fehler"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was gibt `print(\"5 + 5\")` aus?",
+        "options": [
+          "10",
+          "5 + 5",
+          "55",
+          "Einen Fehler"
+        ],
+        "answer": 1,
+        "explanation": "In Anführungszeichen ist es Text – Python rechnet nicht."
+      }
+    ]
+  },
+  "project": {
+    "title": "Mein Steckbrief",
+    "kind": "code",
+    "language": "python",
+    "description": "Schreib ein Programm, das einen kleinen **Steckbrief** über dich (oder eine erfundene Figur) ausgibt. Mach es schön mit Rahmen aus Zeichen wie `*`, `=` oder `~`. Lass Python mindestens eine Sache ausrechnen – zum Beispiel, wie viele Monate du schon lebst.",
+    "starter": [
+      "print(\"*************************\")",
+      "print(\"*     MEIN STECKBRIEF   *\")",
+      "print(\"*************************\")"
+    ],
+    "requirements": [
+      "Mindestens 6 Zeilen Ausgabe.",
+      "Ein Rahmen oder eine Verzierung aus Zeichen.",
+      "Python rechnet mindestens eine Zahl aus."
+    ],
+    "checks": [
+      {
+        "type": "assert",
+        "code": "assert __output__.count('\\n') >= 6",
+        "message": "Dein Steckbrief soll mindestens 6 Zeilen haben."
+      },
+      {
+        "type": "code",
+        "pattern": "\\d\\s*[-+*/]\\s*\\d",
+        "message": "Lass Python etwas ausrechnen, z. B. `print(\"Monate:\", 11 * 12)`."
+      }
+    ],
+    "ideas": [
+      "Male ein kleines Bild aus Zeichen (ASCII-Art), z. B. einen Drachen!",
+      "Rechne aus, wie viele Tage du schon lebst."
+    ],
+    "example": [
+      "print(\"*************************\")",
+      "print(\"*     MEIN STECKBRIEF   *\")",
+      "print(\"*************************\")",
+      "print(\"Name: Funki\")",
+      "print(\"Art: kleiner Drache\")",
+      "print(\"Lieblingsessen: Funkensuppe\")",
+      "print(\"Alter in Monaten:\", 3 * 12)",
+      "print(\"~~~~~~~~~~~~~~~~~~~~~~~~~\")"
+    ]
+  }
+}

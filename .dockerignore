@@ -1,0 +1,10 @@
+node_modules
+client/dist
+client/dist-pages
+client/public/pyodide
+client/public/blockly-media
+client/public/lua
+server/data
+test-results
+playwright-report
+.git

@@ -1,0 +1,314 @@
+{
+  "title": "Variablen & Datentypen",
+  "summary": "Werte merken, Eingaben lesen und mit f-Strings ausgeben.",
+  "icon": "variable",
+  "tasks": [
+    {
+      "id": "erste-variable",
+      "title": "Deine erste Variable",
+      "difficulty": 1,
+      "instructions": "Speichere den Text **Funki** in einer Variable namens `name`. Gib dann mit Hilfe der Variable **Hallo, Funki!** aus.",
+      "starter": "name = \"\"\n",
+      "checks": [
+        {
+          "type": "assert",
+          "code": "assert name == 'Funki'",
+          "message": "In der Variable `name` soll der Text \"Funki\" stehen."
+        },
+        {
+          "type": "code",
+          "pattern": "print\\(.*name",
+          "message": "Benutze die Variable `name` im `print` – schreib „Funki“ dort nicht nochmal hin."
+        },
+        {
+          "type": "output",
+          "expected": "Hallo, Funki!"
+        }
+      ],
+      "hints": [
+        "Erst `name = \"Funki\"`. Dann kannst du `name` in `print` benutzen.",
+        "`print(\"Hallo, \" + name + \"!\")` oder `print(f\"Hallo, {name}!\")`"
+      ],
+      "solution": [
+        "name = \"Funki\"",
+        "print(f\"Hallo, {name}!\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "flaeche",
+      "title": "Flächenrechner",
+      "difficulty": 1,
+      "instructions": "Ein Zimmer ist **8 Meter** breit und **5 Meter** lang. Berechne die Fläche in einer Variable `flaeche` (breite mal hoehe) und gib sie aus.",
+      "starter": "breite = 8\nhoehe = 5\n",
+      "checks": [
+        {
+          "type": "assert",
+          "code": "assert flaeche == 40",
+          "message": "`flaeche` soll breite * hoehe sein (also 40)."
+        },
+        {
+          "type": "code",
+          "pattern": "flaeche\\s*=\\s*.*breite.*\\*|flaeche\\s*=\\s*.*hoehe.*\\*",
+          "message": "Rechne mit den Variablen: `flaeche = breite * hoehe`."
+        },
+        {
+          "type": "output",
+          "expected": "40"
+        }
+      ],
+      "hints": [
+        "Eine neue Variable bekommt ihren Wert mit `=`.",
+        "`flaeche = breite * hoehe` und danach `print(flaeche)`"
+      ],
+      "solution": [
+        "breite = 8",
+        "hoehe = 5",
+        "flaeche = breite * hoehe",
+        "print(flaeche)"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "begruessung",
+      "title": "Hallo, du!",
+      "difficulty": 2,
+      "instructions": "Frag mit `input` nach dem Namen und begrüße die Person. Wenn jemand **Ada** eintippt, soll erscheinen: **Hallo Ada!**",
+      "starter": "name = input(\"Wie heißt du? \")\n",
+      "checks": [
+        {
+          "type": "output",
+          "inputs": [
+            "Ada"
+          ],
+          "expected": "Hallo Ada!",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "Mo"
+          ],
+          "expected": "Hallo Mo!",
+          "match": "contains"
+        }
+      ],
+      "hints": [
+        "In `name` steht schon, was eingetippt wurde.",
+        "`print(\"Hallo \" + name + \"!\")` – achte auf das Leerzeichen nach „Hallo“."
+      ],
+      "solution": [
+        "name = input(\"Wie heißt du? \")",
+        "print(\"Hallo \" + name + \"!\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "alter-tage",
+      "title": "Alter in Tagen",
+      "difficulty": 2,
+      "instructions": "Frag nach dem Alter in Jahren und gib aus, wie viele Tage das ungefähr sind (Jahre × 365). Bei **10** soll erscheinen: **Du bist ungefähr 3650 Tage alt.** Denk daran: `input` liefert Text!",
+      "starter": [
+        "alter = input(\"Wie alt bist du? \")",
+        "print(f\"Du bist ungefähr {alter * 365} Tage alt.\")"
+      ],
+      "checks": [
+        {
+          "type": "output",
+          "inputs": [
+            "10"
+          ],
+          "expected": "Du bist ungefähr 3650 Tage alt.",
+          "match": "contains"
+        },
+        {
+          "type": "output",
+          "inputs": [
+            "12"
+          ],
+          "expected": "Du bist ungefähr 4380 Tage alt.",
+          "match": "contains"
+        }
+      ],
+      "hints": [
+        "Führ das Startprogramm aus: Es schreibt die Zahl 365-mal hintereinander! Warum? Weil `alter` Text ist.",
+        "Wandle die Eingabe um: `alter = int(input(\"Wie alt bist du? \"))`"
+      ],
+      "solution": [
+        "alter = int(input(\"Wie alt bist du? \"))",
+        "print(f\"Du bist ungefähr {alter * 365} Tage alt.\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "datentypen",
+      "title": "Datentypen-Detektiv",
+      "difficulty": 3,
+      "instructions": "Gib jeder Variable einen Wert vom richtigen Typ:\n\n- `zahl` – die ganze Zahl **42** (`int`)\n- `komma` – die Kommazahl **3.5** (`float`)\n- `text` – den **Text** 42 (`str`)\n- `wahr` – den Wahrheitswert **True** (`bool`)",
+      "starter": [
+        "zahl = 0",
+        "komma = 0",
+        "text = 0",
+        "wahr = 0"
+      ],
+      "checks": [
+        {
+          "type": "assert",
+          "code": "assert type(zahl) is int and zahl == 42",
+          "message": "`zahl` soll die ganze Zahl 42 sein (ohne Anführungszeichen)."
+        },
+        {
+          "type": "assert",
+          "code": "assert type(komma) is float and komma == 3.5",
+          "message": "`komma` soll 3.5 sein – mit Punkt, nicht mit Komma!"
+        },
+        {
+          "type": "assert",
+          "code": "assert type(text) is str and text == '42'",
+          "message": "`text` soll der Text \"42\" sein – mit Anführungszeichen."
+        },
+        {
+          "type": "assert",
+          "code": "assert wahr is True",
+          "message": "`wahr` soll `True` sein – großes T, ohne Anführungszeichen."
+        }
+      ],
+      "hints": [
+        "Text hat Anführungszeichen, Zahlen nicht. Kommazahlen schreibt man mit Punkt.",
+        "`zahl = 42`, `komma = 3.5`, `text = \"42\"`, `wahr = True`"
+      ],
+      "solution": [
+        "zahl = 42",
+        "komma = 3.5",
+        "text = \"42\"",
+        "wahr = True"
+      ],
+      "kind": "code",
+      "language": "python"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Welcher Variablenname ist erlaubt?",
+        "options": [
+          "2spieler",
+          "mein-name",
+          "meine_zahl",
+          "mein name"
+        ],
+        "answer": 2,
+        "explanation": "Keine Zahl am Anfang, keine Bindestriche oder Leerzeichen – aber `_` ist erlaubt."
+      },
+      {
+        "type": "single",
+        "question": "Welchen Typ hat `\"5\"`?",
+        "options": [
+          "int",
+          "float",
+          "str",
+          "bool"
+        ],
+        "answer": 2,
+        "explanation": "Mit Anführungszeichen ist es Text (str)."
+      },
+      {
+        "type": "text",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "x = 5\nx = x + 3\nprint(x)",
+        "answer": [
+          "8"
+        ],
+        "placeholder": "Ausgabe"
+      },
+      {
+        "type": "single",
+        "question": "Was liefert `input()` zurück?",
+        "options": [
+          "Immer eine Zahl",
+          "Immer Text (str)",
+          "Das hängt von der Eingabe ab",
+          "Nichts"
+        ],
+        "answer": 1,
+        "explanation": "Darum braucht man `int(...)`, um mit Eingaben zu rechnen."
+      },
+      {
+        "type": "single",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "a = 2\nprint(f\"{a} + {a} = {a + a}\")",
+        "options": [
+          "a + a = a + a",
+          "2 + 2 = 4",
+          "{a} + {a} = {a + a}",
+          "4 + 4 = 8"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was gibt `print(\"4\" + \"2\")` aus?",
+        "options": [
+          "6",
+          "42",
+          "4 + 2",
+          "Einen Fehler"
+        ],
+        "answer": 1,
+        "explanation": "Texte werden mit + aneinandergehängt."
+      }
+    ]
+  },
+  "project": {
+    "title": "Begrüßungs-Roboter",
+    "kind": "code",
+    "language": "python",
+    "description": "Bau einen freundlichen Roboter, der Fragen stellt: nach dem **Namen**, dem **Alter** und der **Lieblingsfarbe**. Danach gibt er eine persönliche Zusammenfassung aus – und rechnet etwas aus, z. B. wie alt die Person in 10 Jahren ist.",
+    "starter": [
+      "print(\"Bip bup! Ich bin RoboFunki.\")",
+      "name = input(\"Wie heißt du? \")"
+    ],
+    "requirements": [
+      "Der Roboter stellt mindestens 3 Fragen.",
+      "Er benutzt die Antworten in seiner Ausgabe (z. B. mit f-Strings).",
+      "Er rechnet mit einer eingegebenen Zahl."
+    ],
+    "checks": [
+      {
+        "type": "code",
+        "pattern": "(input\\([\\s\\S]*){3}",
+        "message": "Der Roboter soll mindestens 3 Fragen stellen (3-mal `input`)."
+      },
+      {
+        "type": "code",
+        "pattern": "int\\(",
+        "message": "Wandle eine Eingabe mit `int(...)` in eine Zahl um und rechne damit."
+      },
+      {
+        "type": "noError",
+        "inputs": [
+          "Ada",
+          "11",
+          "blau"
+        ]
+      }
+    ],
+    "ideas": [
+      "Frag nach dem Lieblingsessen und erfinde ein Rezept dazu.",
+      "Rechne aus, wie viele Stunden die Person schon gelebt hat."
+    ],
+    "example": [
+      "print(\"Bip bup! Ich bin RoboFunki.\")",
+      "name = input(\"Wie heißt du? \")",
+      "alter = int(input(\"Wie alt bist du? \"))",
+      "farbe = input(\"Was ist deine Lieblingsfarbe? \")",
+      "print(f\"Hallo {name}! {farbe} ist eine tolle Farbe.\")",
+      "print(f\"In 10 Jahren bist du {alter + 10} Jahre alt.\")"
+    ]
+  }
+}

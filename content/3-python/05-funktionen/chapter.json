@@ -1,0 +1,289 @@
+{
+  "title": "Funktionen",
+  "summary": "def, Parameter und return – eigene Befehle bauen.",
+  "icon": "function",
+  "tasks": [
+    {
+      "id": "begruesse",
+      "title": "Deine erste Funktion",
+      "difficulty": 1,
+      "instructions": "Schreib eine Funktion `begruesse()`, die **Hallo von Funki!** ausgibt. Ruf sie danach **zweimal** auf.",
+      "starter": "# Definiere hier deine Funktion\n",
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "def\\s+begruesse\\s*\\(\\s*\\)\\s*:",
+          "message": "Definiere die Funktion mit `def begruesse():`."
+        },
+        {
+          "type": "output",
+          "expected": "Hallo von Funki!\nHallo von Funki!"
+        }
+      ],
+      "hints": [
+        "Erst `def begruesse():`, darunter eingerückt das `print`. Dann (nicht eingerückt) zweimal aufrufen.",
+        "Aufruf: `begruesse()` – mit Klammern!"
+      ],
+      "solution": [
+        "def begruesse():",
+        "    print(\"Hallo von Funki!\")",
+        "",
+        "begruesse()",
+        "begruesse()"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "hallo-name",
+      "title": "Mit Parameter",
+      "difficulty": 1,
+      "instructions": "Schreib eine Funktion `hallo(name)`, die **Hallo, NAME!** ausgibt – also bei `hallo(\"Ada\")` genau **Hallo, Ada!**. Ruf sie mit **Ada** und mit **Bob** auf.",
+      "starter": [
+        "def hallo(name):",
+        "    pass  # ersetze pass durch deinen Code"
+      ],
+      "checks": [
+        {
+          "type": "output",
+          "expected": "Hallo, Ada!\nHallo, Bob!"
+        },
+        {
+          "type": "assert",
+          "code": "import io, contextlib\n_b = io.StringIO()\nwith contextlib.redirect_stdout(_b):\n    hallo(\"Zoe\")\nassert _b.getvalue().strip() == 'Hallo, Zoe!'",
+          "message": "`hallo(\"Zoe\")` soll „Hallo, Zoe!“ ausgeben – benutze den Parameter `name`."
+        }
+      ],
+      "hints": [
+        "In der Funktion kannst du `name` wie eine Variable benutzen.",
+        "`print(f\"Hallo, {name}!\")` in der Funktion – dann `hallo(\"Ada\")` und `hallo(\"Bob\")`."
+      ],
+      "solution": [
+        "def hallo(name):",
+        "    print(f\"Hallo, {name}!\")",
+        "",
+        "hallo(\"Ada\")",
+        "hallo(\"Bob\")"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "verdopple",
+      "title": "Verdoppeln mit return",
+      "difficulty": 2,
+      "instructions": "Schreib eine Funktion `verdopple(zahl)`, die das Doppelte **zurückgibt** (mit `return`, nicht `print`). Beispiel: `verdopple(4)` ergibt `8`.",
+      "starter": [
+        "def verdopple(zahl):",
+        "    print(zahl * 2)"
+      ],
+      "checks": [
+        {
+          "type": "assert",
+          "code": "assert verdopple(5) is not None",
+          "message": "Deine Funktion gibt nichts zurück (None). Benutze `return` statt `print`."
+        },
+        {
+          "type": "assert",
+          "code": "assert verdopple(4) == 8",
+          "message": "`verdopple(4)` soll 8 ergeben."
+        },
+        {
+          "type": "assert",
+          "code": "assert verdopple(0) == 0 and verdopple(-3) == -6",
+          "message": "Auch für 0 und negative Zahlen: `verdopple(-3)` soll -6 ergeben."
+        }
+      ],
+      "hints": [
+        "`print` zeigt nur an. `return` gibt das Ergebnis zurück.",
+        "`return zahl * 2`"
+      ],
+      "solution": [
+        "def verdopple(zahl):",
+        "    return zahl * 2"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "flaeche-funktion",
+      "title": "Flächen-Funktion",
+      "difficulty": 2,
+      "instructions": "Schreib eine Funktion `flaeche(breite, hoehe)`, die die Fläche eines Rechtecks zurückgibt. Gib dann `flaeche(7, 3)` aus (das ergibt **21**).",
+      "starter": "# def flaeche(...):\n",
+      "checks": [
+        {
+          "type": "assert",
+          "code": "assert flaeche(7, 3) == 21 and flaeche(2, 10) == 20 and flaeche(1, 1) == 1",
+          "message": "`flaeche(breite, hoehe)` soll breite * hoehe zurückgeben."
+        },
+        {
+          "type": "output",
+          "expected": "21"
+        }
+      ],
+      "hints": [
+        "Zwei Parameter: `def flaeche(breite, hoehe):`",
+        "`return breite * hoehe` – und danach `print(flaeche(7, 3))`."
+      ],
+      "solution": [
+        "def flaeche(breite, hoehe):",
+        "    return breite * hoehe",
+        "",
+        "print(flaeche(7, 3))"
+      ],
+      "kind": "code",
+      "language": "python"
+    },
+    {
+      "id": "groesste",
+      "title": "Die größte Zahl",
+      "difficulty": 3,
+      "instructions": "Schreib eine Funktion `groesste(a, b, c)`, die die **größte** der drei Zahlen zurückgibt – **ohne** die fertige Funktion `max()` zu benutzen. Nimm `if`/`elif`/`else`!",
+      "starter": [
+        "def groesste(a, b, c):",
+        "    return a"
+      ],
+      "checks": [
+        {
+          "type": "code",
+          "pattern": "\\bmax\\s*\\(",
+          "negate": true,
+          "message": "Diesmal ohne `max()` – bau es selbst mit `if`!"
+        },
+        {
+          "type": "assert",
+          "code": "assert groesste(1, 2, 3) == 3 and groesste(3, 2, 1) == 3 and groesste(2, 3, 1) == 3",
+          "message": "Die größte Zahl wird nicht immer gefunden. Teste: groesste(1, 2, 3), groesste(2, 3, 1)."
+        },
+        {
+          "type": "assert",
+          "code": "assert groesste(5, 5, 1) == 5 and groesste(-1, -5, -3) == -1 and groesste(4, 4, 4) == 4",
+          "message": "Auch bei gleichen oder negativen Zahlen soll es klappen (z. B. groesste(5, 5, 1) == 5)."
+        }
+      ],
+      "hints": [
+        "`a` ist die größte, wenn `a >= b and a >= c`.",
+        "`if a >= b and a >= c: return a` – `elif b >= c: return b` – `else: return c`"
+      ],
+      "solution": [
+        "def groesste(a, b, c):",
+        "    if a >= b and a >= c:",
+        "        return a",
+        "    elif b >= c:",
+        "        return b",
+        "    else:",
+        "        return c"
+      ],
+      "kind": "code",
+      "language": "python"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Mit welchem Wort beginnt eine Funktions-Definition?",
+        "options": [
+          "function",
+          "def",
+          "func",
+          "make"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was ist der Unterschied zwischen `print` und `return`?",
+        "options": [
+          "Es gibt keinen",
+          "print zeigt etwas an, return gibt einen Wert an den Aufrufer zurück",
+          "return zeigt etwas an, print gibt zurück",
+          "return beendet Python"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "text",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "def plus_eins(x):\n    return x + 1\n\nprint(plus_eins(plus_eins(2)))",
+        "answer": [
+          "4"
+        ],
+        "placeholder": "Ausgabe",
+        "explanation": "Innen: plus_eins(2) = 3. Außen: plus_eins(3) = 4."
+      },
+      {
+        "type": "single",
+        "question": "Was ist ein Parameter?",
+        "options": [
+          "Ein Fehler",
+          "Eine Variable in den Klammern der Funktion, die beim Aufruf einen Wert bekommt",
+          "Ein Kommentar",
+          "Der Name der Funktion"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Was gibt dieses Programm aus?",
+        "code": "def sag_hi():\n    print(\"Hi\")\n\nergebnis = sag_hi()\nprint(ergebnis)",
+        "options": [
+          "Hi",
+          "Hi und dann None",
+          "None",
+          "Einen Fehler"
+        ],
+        "answer": 1,
+        "explanation": "sag_hi() gibt „Hi“ aus, hat aber kein return – also ist ergebnis None."
+      }
+    ]
+  },
+  "project": {
+    "title": "Werkzeugkasten",
+    "kind": "code",
+    "language": "python",
+    "description": "Bau dir einen **Werkzeugkasten** aus nützlichen Funktionen! Pflicht ist `celsius_zu_fahrenheit(c)` (Formel: **c × 9 / 5 + 32**). Dazu mindestens zwei eigene Ideen: z. B. `ist_gerade(zahl)`, `mehrwertsteuer(preis)` oder `taschengeld_in_wochen(betrag, ziel)`. Teste jede Funktion mit einem `print`.",
+    "starter": [
+      "def celsius_zu_fahrenheit(c):",
+      "    pass",
+      "",
+      "print(celsius_zu_fahrenheit(100))"
+    ],
+    "requirements": [
+      "`celsius_zu_fahrenheit` funktioniert (100 °C = 212 °F).",
+      "Mindestens 3 Funktionen insgesamt.",
+      "Jede Funktion wird ausprobiert."
+    ],
+    "checks": [
+      {
+        "type": "assert",
+        "code": "assert abs(celsius_zu_fahrenheit(100) - 212) < 0.001 and abs(celsius_zu_fahrenheit(0) - 32) < 0.001",
+        "message": "`celsius_zu_fahrenheit(100)` soll 212 ergeben und `celsius_zu_fahrenheit(0)` 32."
+      },
+      {
+        "type": "code",
+        "pattern": "(def\\s+\\w+[\\s\\S]*){3}",
+        "message": "Dein Werkzeugkasten braucht mindestens 3 Funktionen."
+      }
+    ],
+    "ideas": [
+      "Eine Funktion, die prüft, ob ein Jahr ein Schaltjahr ist.",
+      "Eine Funktion `noten_text(punkte)`, die „gut“, „sehr gut“ usw. zurückgibt."
+    ],
+    "example": [
+      "def celsius_zu_fahrenheit(c):",
+      "    return c * 9 / 5 + 32",
+      "",
+      "def ist_gerade(zahl):",
+      "    return zahl % 2 == 0",
+      "",
+      "def wochen_bis_ziel(taschengeld, ziel):",
+      "    return ziel / taschengeld",
+      "",
+      "print(celsius_zu_fahrenheit(100))",
+      "print(ist_gerade(4))",
+      "print(wochen_bis_ziel(5, 60))"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "order": 4,
+  "title": "Webseiten bauen",
+  "short": "HTML, CSS & JS",
+  "subtitle": "Deine eigene Webseite mit Live-Vorschau",
+  "description": "Mit HTML baust du das Gerüst, mit CSS machst du es schön und mit JavaScript wird es lebendig.",
+  "language": "web",
+  "color": "var(--color-stage-web)",
+  "icon": "globe",
+  "status": "bald",
+  "planned": [
+    { "title": "HTML – das Gerüst", "summary": "Überschriften, Absätze, Bilder und Links." },
+    { "title": "CSS – Farben und Formen", "summary": "Farben, Schriften, Abstände und Rahmen." },
+    { "title": "Layout mit Flexbox", "summary": "Dinge nebeneinander und untereinander anordnen." },
+    { "title": "JavaScript – Klicks und Ereignisse", "summary": "Knöpfe, die etwas tun." },
+    { "title": "Projekt: Deine Steckbrief-Seite", "summary": "Eine eigene Seite über dich und deine Hobbys." }
+  ]
+}

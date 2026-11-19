@@ -1,0 +1,397 @@
+{
+  "title": "Schleifen",
+  "summary": "Wiederholen statt abschreiben – und Formen malen.",
+  "icon": "repeat",
+  "tasks": [
+    {
+      "id": "viermal",
+      "kind": "blocks",
+      "title": "Viermal laufen",
+      "difficulty": 1,
+      "instructions": "Funki soll **4-mal 50 Schritte** laufen (also insgesamt 200). Benutze dafür eine **Schleife** und nur **einen** „gehe“-Block.",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_turn_right",
+        "control_repeat"
+      ],
+      "starter": [
+        "wenn_start",
+        "  gehe 50"
+      ],
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "control_repeat",
+          "message": "Nimm den Block „wiederhole … mal“ aus **Steuerung**."
+        },
+        {
+          "type": "blockCount",
+          "block": "motion_move",
+          "max": 1,
+          "message": "Du hast {actual} „gehe“-Blöcke. Mit einer Schleife reicht einer!"
+        },
+        {
+          "type": "position",
+          "x": 200,
+          "y": 0,
+          "message": "Funki steht bei x = {x}. Er soll 4 × 50 = 200 Schritte laufen."
+        }
+      ],
+      "hints": [
+        "Steck den „gehe 50“-Block **in** die Schleife hinein.",
+        "„wiederhole 4 mal“ unter den Startblock – und „gehe 50“ in die Lücke der Schleife."
+      ],
+      "solution": [
+        "wenn_start",
+        "  wiederhole 4",
+        "    gehe 50"
+      ]
+    },
+    {
+      "id": "quadrat",
+      "kind": "blocks",
+      "title": "Das Quadrat",
+      "difficulty": 1,
+      "instructions": "Male ein **Quadrat** mit der Seitenlänge **100**. Setz den **Stift runter**, dann wiederhole 4-mal: gehe 100, drehe dich um 90 Grad.",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left",
+        "control_repeat",
+        "pen_down",
+        "pen_up",
+        "pen_color",
+        "pen_size"
+      ],
+      "starter": "wenn_start",
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "pen_down",
+          "message": "Ohne „Stift runter“ malt Funki nichts. Du findest ihn unter **Malstift**."
+        },
+        {
+          "type": "hasBlock",
+          "block": "control_repeat",
+          "message": "Benutze eine Schleife „wiederhole … mal“."
+        },
+        {
+          "type": "penSegments",
+          "min": 4,
+          "max": 4,
+          "message": "Ein Quadrat hat 4 Seiten – Funki hat {actual} Linien gemalt."
+        },
+        {
+          "type": "closedShape",
+          "message": "Die Form ist nicht geschlossen. Dreht sich Funki jedes Mal um 90 Grad?"
+        }
+      ],
+      "hints": [
+        "Erst „Stift runter“, dann die Schleife.",
+        "Stift runter → wiederhole 4 mal [ gehe 100, drehe dich ↻ um 90 Grad ]"
+      ],
+      "solution": [
+        "wenn_start",
+        "  stift_runter",
+        "  wiederhole 4",
+        "    gehe 100",
+        "    drehe_rechts 90"
+      ]
+    },
+    {
+      "id": "dreieck",
+      "kind": "blocks",
+      "title": "Das Dreieck",
+      "difficulty": 2,
+      "instructions": "Jetzt ein **gleichseitiges Dreieck** mit Seitenlänge **120**. Wie weit muss sich Funki an jeder Ecke drehen? Denk an die Vielecks-Regel!",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left",
+        "control_repeat",
+        "pen_down",
+        "pen_up",
+        "pen_color",
+        "pen_size"
+      ],
+      "starter": [
+        "wenn_start",
+        "  stift_runter"
+      ],
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "control_repeat",
+          "message": "Benutze eine Schleife."
+        },
+        {
+          "type": "penSegments",
+          "min": 3,
+          "max": 3,
+          "message": "Ein Dreieck hat 3 Seiten – Funki hat {actual} Linien gemalt."
+        },
+        {
+          "type": "closedShape",
+          "message": "Das Dreieck ist nicht geschlossen. Die Drehung muss 360 ÷ 3 sein."
+        }
+      ],
+      "hints": [
+        "Ein Dreieck hat 3 Ecken. Funki dreht sich insgesamt 360 Grad.",
+        "360 ÷ 3 = 120. Also: wiederhole 3 mal [ gehe 120, drehe dich um 120 Grad ]."
+      ],
+      "solution": [
+        "wenn_start",
+        "  stift_runter",
+        "  wiederhole 3",
+        "    gehe 120",
+        "    drehe_rechts 120"
+      ]
+    },
+    {
+      "id": "sechseck",
+      "kind": "blocks",
+      "title": "Buntes Sechseck",
+      "difficulty": 2,
+      "instructions": "Male ein **Sechseck** mit Seitenlänge **70** in einer Farbe deiner Wahl. Stell die Stiftfarbe ein, **bevor** Funki losmalt.",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left",
+        "control_repeat",
+        "pen_down",
+        "pen_up",
+        "pen_color",
+        "pen_size"
+      ],
+      "starter": "wenn_start",
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "pen_color",
+          "message": "Benutze „setze Stiftfarbe auf …“."
+        },
+        {
+          "type": "penSegments",
+          "min": 6,
+          "max": 6,
+          "message": "Ein Sechseck hat 6 Seiten – Funki hat {actual} Linien gemalt."
+        },
+        {
+          "type": "closedShape",
+          "message": "Das Sechseck ist nicht geschlossen. 360 ÷ 6 = ?"
+        }
+      ],
+      "hints": [
+        "6 Ecken – also 6 Wiederholungen. Und die Drehung: 360 ÷ 6.",
+        "stiftfarbe → Stift runter → wiederhole 6 mal [ gehe 70, drehe dich um 60 Grad ]"
+      ],
+      "solution": [
+        "wenn_start",
+        "  stiftfarbe lila",
+        "  stift_runter",
+        "  wiederhole 6",
+        "    gehe 70",
+        "    drehe_rechts 60"
+      ]
+    },
+    {
+      "id": "treppe",
+      "kind": "blocks",
+      "title": "Die Treppe",
+      "difficulty": 3,
+      "instructions": "Funki steigt eine **Treppe mit 5 Stufen** hinauf. Jede Stufe: 30 Schritte nach oben, 30 Schritte nach rechts. Er startet unten links und schaut nach rechts. Benutze höchstens **zwei** „gehe“-Blöcke!",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left",
+        "control_repeat",
+        "pen_down",
+        "pen_up",
+        "pen_color",
+        "pen_size"
+      ],
+      "starter": [
+        "wenn_start",
+        "  stift_runter"
+      ],
+      "stage": {
+        "x": -150,
+        "y": -120,
+        "grid": true
+      },
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "control_repeat",
+          "message": "Die Stufen wiederholen sich – nimm eine Schleife."
+        },
+        {
+          "type": "blockCount",
+          "block": "motion_move",
+          "max": 2,
+          "message": "Du hast {actual} „gehe“-Blöcke. Mit einer Schleife reichen zwei."
+        },
+        {
+          "type": "position",
+          "x": 0,
+          "y": 30,
+          "message": "Funki steht bei x = {x}, y = {y}. Nach 5 Stufen sollte er bei x = 0, y = 30 sein."
+        }
+      ],
+      "hints": [
+        "Eine Stufe: erst nach oben drehen und gehen, dann wieder nach rechts drehen und gehen.",
+        "wiederhole 5 mal [ drehe dich ↺ um 90, gehe 30, drehe dich ↻ um 90, gehe 30 ]"
+      ],
+      "solution": [
+        "wenn_start",
+        "  stift_runter",
+        "  wiederhole 5",
+        "    drehe_links 90",
+        "    gehe 30",
+        "    drehe_rechts 90",
+        "    gehe 30"
+      ]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Wozu ist eine Schleife gut?",
+        "options": [
+          "Damit das Programm schneller lädt",
+          "Um Blöcke mehrmals auszuführen, ohne sie abzuschreiben",
+          "Um Funki eine Farbe zu geben",
+          "Um das Programm zu beenden"
+        ],
+        "answer": 1,
+        "explanation": "Schleifen wiederholen Blöcke – dein Programm bleibt kurz und übersichtlich."
+      },
+      {
+        "type": "single",
+        "question": "Wie oft sagt Funki „Hallo“?",
+        "blocks": [
+          "wenn_start",
+          "  wiederhole 3",
+          "    sage_für \"Hallo\" 1"
+        ],
+        "options": [
+          "1-mal",
+          "2-mal",
+          "3-mal",
+          "unendlich oft"
+        ],
+        "answer": 2,
+        "explanation": "Die Schleife läuft 3-mal – jedes Mal sagt Funki „Hallo“."
+      },
+      {
+        "type": "text",
+        "question": "Um wie viel Grad muss sich Funki an jeder Ecke drehen, damit ein Fünfeck entsteht?",
+        "answer": [
+          "72",
+          "72 Grad",
+          "72°"
+        ],
+        "placeholder": "Zahl",
+        "explanation": "360 ÷ 5 = 72."
+      },
+      {
+        "type": "single",
+        "question": "Was passiert bei „wiederhole fortlaufend“?",
+        "options": [
+          "Die Blöcke laufen genau 10-mal",
+          "Die Blöcke laufen, bis man auf Stopp klickt",
+          "Das Programm stürzt ab",
+          "Nichts"
+        ],
+        "answer": 1,
+        "explanation": "„fortlaufend“ heißt: immer weiter, bis du Stopp drückst."
+      },
+      {
+        "type": "multiple",
+        "question": "Welche Blöcke gehören IN die Schleife, wenn Funki ein Quadrat malt?",
+        "options": [
+          "gehe 100 Schritte",
+          "drehe dich um 90 Grad",
+          "Stift runter",
+          "Wenn ▶ angeklickt"
+        ],
+        "answer": [
+          0,
+          1
+        ],
+        "explanation": "Nur „gehe“ und „drehe“ wiederholen sich. „Stift runter“ reicht einmal vorher."
+      }
+    ]
+  },
+  "project": {
+    "title": "Muster-Maler",
+    "kind": "blocks",
+    "description": "Werde Künstler:in! Male mit Schleifen ein buntes Muster – zum Beispiel eine Blume aus Quadraten, einen Stern oder eine Spirale. Probier verschiedene Zahlen aus und schau, was passiert.",
+    "toolbox": [
+      "event_flag",
+      "motion_move",
+      "motion_turn_right",
+      "motion_turn_left",
+      "motion_goto",
+      "control_repeat",
+      "control_forever",
+      "pen_down",
+      "pen_up",
+      "pen_color",
+      "pen_size",
+      "pen_clear",
+      "looks_background",
+      "looks_hide"
+    ],
+    "starter": [
+      "wenn_start",
+      "  lösche_alles",
+      "  stift_runter"
+    ],
+    "requirements": [
+      "Dein Muster benutzt mindestens eine Schleife.",
+      "Funki malt mindestens 8 Linien.",
+      "Es kommen mindestens zwei Farben vor."
+    ],
+    "checks": [
+      {
+        "type": "hasBlock",
+        "block": "control_repeat",
+        "message": "Benutze mindestens eine „wiederhole“-Schleife."
+      },
+      {
+        "type": "penSegments",
+        "min": 8,
+        "message": "Funki hat erst {actual} Linien gemalt – es sollen mindestens 8 sein."
+      },
+      {
+        "type": "hasBlock",
+        "block": "pen_color",
+        "min": 2,
+        "message": "Benutze mindestens zweimal „setze Stiftfarbe auf …“."
+      }
+    ],
+    "ideas": [
+      "Versteck Funki am Ende mit „verstecke dich“, dann sieht man nur das Bild.",
+      "Ändere den Hintergrund mit „setze Hintergrund auf …“."
+    ],
+    "example": [
+      "wenn_start",
+      "  lösche_alles",
+      "  stift_runter",
+      "  wiederhole 8",
+      "    stiftfarbe rot",
+      "    wiederhole 4",
+      "      gehe 60",
+      "      drehe_rechts 90",
+      "    stiftfarbe blau",
+      "    drehe_rechts 45"
+    ]
+  }
+}

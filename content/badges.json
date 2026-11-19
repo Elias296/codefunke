@@ -1,0 +1,20 @@
+[
+  { "id": "erster-code", "title": "Erster Funke", "description": "Deine erste Aufgabe gelöst!", "icon": "sparkles", "color": "#ffc93c", "condition": { "type": "tasksCompleted", "count": 1 } },
+  { "id": "fuenf-aufgaben", "title": "Warmgelaufen", "description": "5 Aufgaben gelöst.", "icon": "zap", "color": "#ff9f1c", "condition": { "type": "tasksCompleted", "count": 5 } },
+  { "id": "zwanzig-aufgaben", "title": "Fleißiger Funke", "description": "20 Aufgaben gelöst.", "icon": "flame", "color": "#ff6b35", "condition": { "type": "tasksCompleted", "count": 20 } },
+  { "id": "fuenfzig-aufgaben", "title": "Code-Marathon", "description": "50 Aufgaben gelöst.", "icon": "rocket", "color": "#ef476f", "condition": { "type": "tasksCompleted", "count": 50 } },
+  { "id": "quiz-ass", "title": "Quiz-Ass", "description": "Ein Quiz ohne einen einzigen Fehler.", "icon": "brain", "color": "#9b7bff", "condition": { "type": "perfectQuizzes", "count": 1 } },
+  { "id": "quiz-profi", "title": "Wissens-Drache", "description": "5 Quizze fehlerfrei.", "icon": "graduation", "color": "#8f8cff", "condition": { "type": "perfectQuizzes", "count": 5 } },
+  { "id": "ohne-hilfe", "title": "Ganz allein", "description": "5 Aufgaben ohne Tipps gelöst.", "icon": "target", "color": "#2ec4b6", "condition": { "type": "noHintTasks", "count": 5 } },
+  { "id": "fehlerjaeger", "title": "Fehlerjäger", "description": "Einen Fehler gefunden und repariert.", "icon": "bug", "color": "#4cc05e", "condition": { "type": "errorsFixed", "count": 1 } },
+  { "id": "fehlerprofi", "title": "Bug-Detektiv", "description": "10 Fehler repariert.", "icon": "bug", "color": "#43aa5b", "condition": { "type": "errorsFixed", "count": 10 } },
+  { "id": "serie-3", "title": "Dranbleiber", "description": "3 Tage hintereinander gelernt.", "icon": "calendar", "color": "#ffc93c", "condition": { "type": "streak", "count": 3 } },
+  { "id": "serie-7", "title": "Wochen-Flamme", "description": "7 Tage hintereinander gelernt.", "icon": "flame", "color": "#ff6b35", "condition": { "type": "streak", "count": 7 } },
+  { "id": "serie-30", "title": "Ewiges Feuer", "description": "30 Tage hintereinander gelernt.", "icon": "crown", "color": "#ef476f", "condition": { "type": "streak", "count": 30 } },
+  { "id": "erstes-projekt", "title": "Projekt-Starter", "description": "Dein erstes Kapitel-Projekt geschafft.", "icon": "puzzle", "color": "#4d8dff", "condition": { "type": "projectsCompleted", "count": 1 } },
+  { "id": "galerie", "title": "Ausstellung", "description": "Ein eigenes Programm gespeichert.", "icon": "palette", "color": "#9b7bff", "condition": { "type": "projectsSaved", "count": 1 } },
+  { "id": "teilen", "title": "Teilen ist toll", "description": "Ein Projekt mit anderen geteilt.", "icon": "heart", "color": "#ef476f", "condition": { "type": "projectsShared", "count": 1 } },
+  { "id": "level-5", "title": "Wolkenflitzer", "description": "Level 5 erreicht.", "icon": "star", "color": "#ffc93c", "condition": { "type": "level", "count": 5 } },
+  { "id": "stufe-scratch", "title": "Blöcke gemeistert", "description": "Stufe 1 (Scratch) bestanden.", "icon": "blocks", "color": "#ff9f1c", "condition": { "type": "stagePassed", "stage": "1-scratch" } },
+  { "id": "stufe-python", "title": "Python-Pionier", "description": "Stufe 3 (Python) bestanden.", "icon": "terminal", "color": "#4d8dff", "condition": { "type": "stagePassed", "stage": "3-python" } }
+]

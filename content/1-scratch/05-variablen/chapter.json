@@ -1,0 +1,560 @@
+{
+  "title": "Variablen",
+  "summary": "Punkte zählen, würfeln und sich Dinge merken.",
+  "icon": "variable",
+  "tasks": [
+    {
+      "id": "zaehler",
+      "kind": "blocks",
+      "title": "Der Zähler",
+      "difficulty": 1,
+      "instructions": "Erstelle eine Variable mit dem Namen **punkte**. Setze sie beim Start auf **0** und erhöhe sie dann **dreimal um 1**. Am Ende soll **punkte = 3** sein.",
+      "toolbox": [
+        "event_flag",
+        "event_click",
+        "event_key",
+        "motion_move",
+        "motion_turn_right",
+        "motion_goto_random",
+        "control_repeat",
+        "control_forever",
+        "control_if",
+        "control_if_else",
+        "control_wait",
+        "data_set",
+        "data_change",
+        "data_get",
+        "op_add",
+        "op_sub",
+        "op_mul",
+        "op_random",
+        "op_eq",
+        "op_gt",
+        "op_lt",
+        "op_join",
+        "looks_say_secs",
+        "looks_say",
+        "pen_down",
+        "pen_color"
+      ],
+      "starter": "wenn_start",
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "data_set",
+          "message": "Setze die Variable zuerst mit „setze punkte auf 0“."
+        },
+        {
+          "type": "variable",
+          "name": "punkte",
+          "equals": 3,
+          "message": "punkte ist am Ende {actual} – es soll 3 sein."
+        }
+      ],
+      "hints": [
+        "Unter **Variablen** → „＋ Variable erstellen“ → Name: punkte.",
+        "setze punkte auf 0 → ändere punkte um 1 → ändere punkte um 1 → ändere punkte um 1"
+      ],
+      "solution": [
+        "wenn_start",
+        "  setze punkte 0",
+        "  ändere punkte 1",
+        "  ändere punkte 1",
+        "  ändere punkte 1"
+      ]
+    },
+    {
+      "id": "bis-zehn",
+      "kind": "blocks",
+      "title": "Zähl bis 10",
+      "difficulty": 2,
+      "instructions": "Funki zählt laut bis **10**: Erstelle eine Variable **zahl**, setze sie auf 0 und wiederhole 10-mal: erhöhe **zahl** um 1 und lass Funki **zahl** für 0.5 Sekunden sagen. Benutze nur **einen** „ändere“-Block.",
+      "toolbox": [
+        "event_flag",
+        "event_click",
+        "event_key",
+        "motion_move",
+        "motion_turn_right",
+        "motion_goto_random",
+        "control_repeat",
+        "control_forever",
+        "control_if",
+        "control_if_else",
+        "control_wait",
+        "data_set",
+        "data_change",
+        "data_get",
+        "op_add",
+        "op_sub",
+        "op_mul",
+        "op_random",
+        "op_eq",
+        "op_gt",
+        "op_lt",
+        "op_join",
+        "looks_say_secs",
+        "looks_say",
+        "pen_down",
+        "pen_color"
+      ],
+      "starter": "wenn_start",
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "control_repeat",
+          "message": "Nimm eine Schleife „wiederhole 10 mal“."
+        },
+        {
+          "type": "blockCount",
+          "block": "data_change",
+          "max": 1,
+          "message": "Mit einer Schleife brauchst du nur einen „ändere“-Block (du hast {actual})."
+        },
+        {
+          "type": "variable",
+          "name": "zahl",
+          "equals": 10,
+          "message": "zahl ist am Ende {actual} – es soll 10 sein."
+        },
+        {
+          "type": "said",
+          "text": "10",
+          "message": "Funki soll beim Zählen die Zahl sagen – steck den runden Block „zahl“ in „sage“."
+        }
+      ],
+      "hints": [
+        "Den runden Block „zahl“ kannst du in das Textfeld von „sage“ ziehen.",
+        "setze zahl auf 0 → wiederhole 10 mal [ ändere zahl um 1, sage (zahl) für 0.5 Sekunden ]"
+      ],
+      "solution": [
+        "wenn_start",
+        "  setze zahl 0",
+        "  wiederhole 10",
+        "    ändere zahl 1",
+        "    sage_für zahl 0.5"
+      ]
+    },
+    {
+      "id": "spirale",
+      "kind": "blocks",
+      "title": "Die Spirale",
+      "difficulty": 2,
+      "instructions": "Male eine **Spirale**: Variable **länge** auf **10** setzen, Stift runter, dann **20-mal**: gehe **länge** Schritte, drehe dich um 90 Grad, erhöhe **länge** um **10**.",
+      "toolbox": [
+        "event_flag",
+        "event_click",
+        "event_key",
+        "motion_move",
+        "motion_turn_right",
+        "motion_goto_random",
+        "control_repeat",
+        "control_forever",
+        "control_if",
+        "control_if_else",
+        "control_wait",
+        "data_set",
+        "data_change",
+        "data_get",
+        "op_add",
+        "op_sub",
+        "op_mul",
+        "op_random",
+        "op_eq",
+        "op_gt",
+        "op_lt",
+        "op_join",
+        "looks_say_secs",
+        "looks_say",
+        "pen_down",
+        "pen_color"
+      ],
+      "starter": [
+        "wenn_start",
+        "  stift_runter"
+      ],
+      "checks": [
+        {
+          "type": "penSegments",
+          "min": 20,
+          "message": "Funki hat {actual} Linien gemalt – es sollen 20 sein."
+        },
+        {
+          "type": "variable",
+          "name": "länge",
+          "equals": 210,
+          "message": "länge ist am Ende {actual}. Startwert 10, 20-mal +10 = 210."
+        }
+      ],
+      "hints": [
+        "Zieh den runden Block „länge“ in das Zahlenfeld von „gehe“.",
+        "setze länge auf 10 → wiederhole 20 mal [ gehe (länge), drehe dich um 90, ändere länge um 10 ]"
+      ],
+      "solution": [
+        "wenn_start",
+        "  stift_runter",
+        "  setze länge 10",
+        "  wiederhole 20",
+        "    gehe länge",
+        "    drehe_rechts 90",
+        "    ändere länge 10"
+      ]
+    },
+    {
+      "id": "klickzaehler",
+      "kind": "blocks",
+      "title": "Klick-Zähler",
+      "difficulty": 2,
+      "instructions": "Beim Start wird die Variable **klicks** auf 0 gesetzt. Bei jedem **Klick auf Funki** erhöht sich **klicks** um 1 und Funki sagt zum Beispiel **„Klicks: 3“**. Benutze dafür „verbinde … und …“.",
+      "toolbox": [
+        "event_flag",
+        "event_click",
+        "event_key",
+        "motion_move",
+        "motion_turn_right",
+        "motion_goto_random",
+        "control_repeat",
+        "control_forever",
+        "control_if",
+        "control_if_else",
+        "control_wait",
+        "data_set",
+        "data_change",
+        "data_get",
+        "op_add",
+        "op_sub",
+        "op_mul",
+        "op_random",
+        "op_eq",
+        "op_gt",
+        "op_lt",
+        "op_join",
+        "looks_say_secs",
+        "looks_say",
+        "pen_down",
+        "pen_color"
+      ],
+      "starter": "wenn_start",
+      "run": {
+        "steps": [
+          {
+            "flag": true,
+            "ticks": 2
+          },
+          {
+            "click": true,
+            "ticks": 3
+          },
+          {
+            "click": true,
+            "ticks": 3
+          },
+          {
+            "click": true,
+            "ticks": 3
+          }
+        ]
+      },
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "event_click",
+          "message": "Du brauchst „Wenn Funki angeklickt“."
+        },
+        {
+          "type": "variable",
+          "name": "klicks",
+          "equals": 3,
+          "message": "Nach 3 Klicks ist klicks = {actual}. Es soll 3 sein."
+        },
+        {
+          "type": "said",
+          "text": "Klicks: 3",
+          "message": "Funki soll „Klicks: 3“ sagen. Benutze „verbinde (Klicks: ) und (klicks)“ – mit Leerzeichen nach dem Doppelpunkt."
+        }
+      ],
+      "hints": [
+        "Zwei Startblöcke: „Wenn ▶ angeklickt“ für das Zurücksetzen und „Wenn Funki angeklickt“ für das Zählen.",
+        "Wenn Funki angeklickt → ändere klicks um 1 → sage (verbinde „Klicks: “ und (klicks))"
+      ],
+      "solution": [
+        "wenn_start",
+        "  setze klicks 0",
+        "",
+        "wenn_angeklickt",
+        "  ändere klicks 1",
+        "  sage (verbinde \"Klicks: \" klicks)"
+      ]
+    },
+    {
+      "id": "wuerfel",
+      "kind": "blocks",
+      "title": "Der Würfel",
+      "difficulty": 3,
+      "instructions": "Funki würfelt! Setze die Variable **wurf** auf eine **Zufallszahl von 1 bis 6** und lass Funki sagen: **„Ich würfle eine …“**. **Falls** es eine **6** ist, ruft er danach **„Sechs! Juhu!“**.",
+      "toolbox": [
+        "event_flag",
+        "event_click",
+        "event_key",
+        "motion_move",
+        "motion_turn_right",
+        "motion_goto_random",
+        "control_repeat",
+        "control_forever",
+        "control_if",
+        "control_if_else",
+        "control_wait",
+        "data_set",
+        "data_change",
+        "data_get",
+        "op_add",
+        "op_sub",
+        "op_mul",
+        "op_random",
+        "op_eq",
+        "op_gt",
+        "op_lt",
+        "op_join",
+        "looks_say_secs",
+        "looks_say",
+        "pen_down",
+        "pen_color"
+      ],
+      "starter": "wenn_start",
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "op_random",
+          "message": "Für den Zufall brauchst du „Zufallszahl von 1 bis 6“."
+        },
+        {
+          "type": "hasBlock",
+          "block": "control_if",
+          "message": "Prüfe mit „falls ⟨(wurf) = 6⟩“, ob eine Sechs gewürfelt wurde."
+        },
+        {
+          "type": "state",
+          "path": "variables.wurf",
+          "min": 1,
+          "max": 6,
+          "message": "wurf ist {actual} – es soll eine Zahl von 1 bis 6 sein."
+        },
+        {
+          "type": "said",
+          "text": "Ich würfle",
+          "message": "Funki soll „Ich würfle eine …“ sagen."
+        }
+      ],
+      "hints": [
+        "setze wurf auf (Zufallszahl von 1 bis 6) – den Zufallsblock findest du bei **Operatoren**.",
+        "setze wurf auf (Zufallszahl von 1 bis 6) → sage (verbinde „Ich würfle eine “ und (wurf)) für 2 Sek. → falls ⟨(wurf) = 6⟩ dann [ sage „Sechs! Juhu!“ ]"
+      ],
+      "solution": [
+        "wenn_start",
+        "  setze wurf (zufall 1 6)",
+        "  sage_für (verbinde \"Ich würfle eine \" wurf) 2",
+        "  falls (= wurf 6)",
+        "    sage_für \"Sechs! Juhu!\" 2"
+      ]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Was ist eine Variable?",
+        "options": [
+          "Ein besonders schneller Block",
+          "Eine Kiste mit Namen, in der sich ein Programm etwas merkt",
+          "Ein Fehler im Programm",
+          "Eine Taste auf der Tastatur"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "single",
+        "question": "Welchen Wert hat punkte am Ende?",
+        "blocks": [
+          "wenn_start",
+          "  setze punkte 5",
+          "  ändere punkte 3"
+        ],
+        "options": [
+          "3",
+          "5",
+          "8",
+          "53"
+        ],
+        "answer": 2,
+        "explanation": "Erst 5, dann +3 → 8."
+      },
+      {
+        "type": "text",
+        "question": "Welchen Wert hat a am Ende?",
+        "blocks": [
+          "wenn_start",
+          "  setze a 2",
+          "  wiederhole 3",
+          "    ändere a 2"
+        ],
+        "answer": [
+          "8"
+        ],
+        "placeholder": "Zahl",
+        "explanation": "Start 2, dann dreimal +2: 2 → 4 → 6 → 8."
+      },
+      {
+        "type": "single",
+        "question": "Was macht „setze punkte auf 0“, wenn punkte vorher 12 war?",
+        "options": [
+          "punkte wird 12",
+          "punkte wird 0",
+          "punkte wird 120",
+          "Es passiert nichts"
+        ],
+        "answer": 1,
+        "explanation": "„setze“ ersetzt den alten Wert komplett."
+      },
+      {
+        "type": "order",
+        "question": "Bring die Blöcke für einen Punktezähler in die richtige Reihenfolge.",
+        "lines": [
+          "Wenn ▶ angeklickt",
+          "setze punkte auf 0",
+          "wiederhole 5 mal",
+          "ändere punkte um 1"
+        ],
+        "explanation": "Erst setzen (auf 0), dann in der Schleife hochzählen."
+      }
+    ]
+  },
+  "project": {
+    "title": "Fang-den-Funki",
+    "kind": "blocks",
+    "description": "Ein Klick-Spiel: Jedes Mal, wenn man Funki anklickt, gibt es einen **Punkt** und Funki springt an eine **zufällige Position**. Bei **10 Punkten** ruft er **„Gewonnen!“**. Nenne die Variable **punkte**.",
+    "toolbox": [
+      "event_flag",
+      "event_click",
+      "event_key",
+      "motion_move",
+      "motion_turn_right",
+      "motion_goto_random",
+      "control_repeat",
+      "control_forever",
+      "control_if",
+      "control_if_else",
+      "control_wait",
+      "data_set",
+      "data_change",
+      "data_get",
+      "op_add",
+      "op_sub",
+      "op_mul",
+      "op_random",
+      "op_eq",
+      "op_gt",
+      "op_lt",
+      "op_join",
+      "looks_say_secs",
+      "looks_say",
+      "pen_down",
+      "pen_color",
+      "looks_set_size",
+      "looks_color",
+      "control_stop"
+    ],
+    "starter": [
+      "wenn_start",
+      "  setze punkte 0"
+    ],
+    "run": {
+      "steps": [
+        {
+          "flag": true,
+          "ticks": 2
+        },
+        {
+          "click": true,
+          "ticks": 3
+        },
+        {
+          "click": true,
+          "ticks": 3
+        },
+        {
+          "click": true,
+          "ticks": 3
+        },
+        {
+          "click": true,
+          "ticks": 3
+        },
+        {
+          "click": true,
+          "ticks": 3
+        },
+        {
+          "click": true,
+          "ticks": 3
+        },
+        {
+          "click": true,
+          "ticks": 3
+        },
+        {
+          "click": true,
+          "ticks": 3
+        },
+        {
+          "click": true,
+          "ticks": 3
+        },
+        {
+          "click": true,
+          "ticks": 3
+        }
+      ]
+    },
+    "requirements": [
+      "Beim Start ist punkte 0.",
+      "Jeder Klick gibt einen Punkt und Funki springt woandershin.",
+      "Bei 10 Punkten sagt Funki „Gewonnen!“."
+    ],
+    "checks": [
+      {
+        "type": "hasBlock",
+        "block": "event_click",
+        "message": "Du brauchst „Wenn Funki angeklickt“."
+      },
+      {
+        "type": "hasBlock",
+        "block": "motion_goto_random",
+        "message": "Funki soll nach jedem Klick an eine zufällige Position springen."
+      },
+      {
+        "type": "variable",
+        "name": "punkte",
+        "min": 10,
+        "message": "Nach 10 Klicks hat die Variable punkte nur {actual}."
+      },
+      {
+        "type": "said",
+        "text": "Gewonnen",
+        "message": "Bei 10 Punkten soll Funki „Gewonnen!“ sagen."
+      }
+    ],
+    "ideas": [
+      "Mach Funki mit jedem Punkt ein bisschen kleiner – dann wird es schwerer!",
+      "Zeig die Punkte mit „sage (verbinde …)“ an."
+    ],
+    "example": [
+      "wenn_start",
+      "  setze punkte 0",
+      "",
+      "wenn_angeklickt",
+      "  ändere punkte 1",
+      "  gehe_zufall",
+      "  falls (= punkte 10)",
+      "    sage \"Gewonnen!\""
+    ]
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "title": "Funki bewegt sich",
+  "summary": "Dein erstes Programm: laufen, drehen, springen und sprechen.",
+  "icon": "footprints",
+  "tasks": [
+    {
+      "id": "erster-schritt",
+      "kind": "blocks",
+      "title": "Der erste Schritt",
+      "difficulty": 1,
+      "instructions": "Lass Funki **100 Schritte** nach rechts laufen. Häng dazu einen „gehe … Schritte“-Block unter „Wenn ▶ angeklickt“ und stell die Zahl auf **100**. Dann klick auf **▶ Start** und danach auf **Prüfen**.",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left"
+      ],
+      "starter": "wenn_start",
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "motion_move",
+          "message": "Du brauchst den blauen Block „gehe … Schritte“ aus **Bewegung**."
+        },
+        {
+          "type": "position",
+          "x": 100,
+          "y": 0,
+          "message": "Funki steht bei x = {x}. Er soll bei x = 100 ankommen – ändere die Zahl im „gehe“-Block auf 100."
+        }
+      ],
+      "hints": [
+        "Klick links auf **Bewegung**. Dort findest du „gehe 10 Schritte“.",
+        "Zieh „gehe 10 Schritte“ direkt unter „Wenn ▶ angeklickt“, bis es *klick* macht. Dann klick auf die 10 und tippe 100."
+      ],
+      "solution": [
+        "wenn_start",
+        "  gehe 100"
+      ]
+    },
+    {
+      "id": "um-die-ecke",
+      "kind": "blocks",
+      "title": "Um die Ecke",
+      "difficulty": 1,
+      "instructions": "Funki soll **100 Schritte** nach rechts laufen, sich dann um **90 Grad nach links** drehen und **80 Schritte** nach oben laufen. Am Ende steht er bei **x: 100, y: 80**.",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left"
+      ],
+      "starter": "wenn_start",
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "motion_turn_left",
+          "message": "Für die Drehung nach links brauchst du „drehe dich ↺ um … Grad“."
+        },
+        {
+          "type": "position",
+          "x": 100,
+          "y": 80,
+          "message": "Funki landet bei x = {x}, y = {y}. Er soll bei x = 100, y = 80 stehen. Prüfe die Reihenfolge: gehen – drehen – gehen."
+        }
+      ],
+      "hints": [
+        "Du brauchst drei Blöcke: gehe, drehe ↺, gehe.",
+        "gehe 100 → drehe dich ↺ um 90 Grad → gehe 80. Nach der Drehung schaut Funki nach oben."
+      ],
+      "solution": [
+        "wenn_start",
+        "  gehe 100",
+        "  drehe_links 90",
+        "  gehe 80"
+      ]
+    },
+    {
+      "id": "sprung",
+      "kind": "blocks",
+      "title": "Teleport!",
+      "difficulty": 2,
+      "instructions": "Funki kann sich auch direkt an eine Stelle „beamen“. Lass ihn mit **„gehe zu x: y:“** nach **x: 180, y: 120** springen (oben rechts) und dann **„Hallo!“ für 2 Sekunden** sagen.",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_goto",
+        "looks_say_secs",
+        "looks_say"
+      ],
+      "starter": "wenn_start",
+      "stage": {
+        "grid": true
+      },
+      "checks": [
+        {
+          "type": "hasBlock",
+          "block": "motion_goto",
+          "message": "Benutze den Block „gehe zu x: … y: …“."
+        },
+        {
+          "type": "position",
+          "x": 180,
+          "y": 120,
+          "message": "Funki ist bei x = {x}, y = {y}. Ziel ist x = 180, y = 120."
+        },
+        {
+          "type": "said",
+          "text": "Hallo",
+          "message": "Funki soll „Hallo!“ sagen. Den Block findest du unter **Aussehen**."
+        }
+      ],
+      "hints": [
+        "Den Sprech-Block findest du unter **Aussehen**: „sage Hallo! für 2 Sekunden“.",
+        "Zuerst „gehe zu x: 180 y: 120“, darunter „sage Hallo! für 2 Sekunden“."
+      ],
+      "solution": [
+        "wenn_start",
+        "  gehe_zu 180 120",
+        "  sage_für \"Hallo!\" 2"
+      ]
+    },
+    {
+      "id": "hin-und-zurueck",
+      "kind": "blocks",
+      "title": "Hin und zurück",
+      "difficulty": 2,
+      "instructions": "Funki läuft **150 Schritte** nach rechts, macht eine **halbe Drehung** und läuft zurück zur **Mitte**. Am Ende schaut er nach **links**.",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_turn_right",
+        "motion_turn_left"
+      ],
+      "starter": "wenn_start",
+      "checks": [
+        {
+          "type": "position",
+          "x": 0,
+          "y": 0,
+          "message": "Funki steht bei x = {x}, y = {y} – er soll wieder in der Mitte (0 | 0) ankommen."
+        },
+        {
+          "type": "direction",
+          "value": -90,
+          "message": "Funki schaut in Richtung {actual}. Am Ende soll er nach links schauen (-90). Eine halbe Drehung sind 180 Grad."
+        }
+      ],
+      "hints": [
+        "Eine halbe Drehung sind **180 Grad**.",
+        "gehe 150 → drehe dich um 180 Grad → gehe 150."
+      ],
+      "solution": [
+        "wenn_start",
+        "  gehe 150",
+        "  drehe_rechts 180",
+        "  gehe 150"
+      ]
+    },
+    {
+      "id": "gleiten",
+      "kind": "blocks",
+      "title": "Sanft gleiten",
+      "difficulty": 3,
+      "instructions": "Lass Funki in **2 Sekunden** nach **x: -150, y: 100** gleiten, danach in **1 Sekunde** zurück zur Mitte (**0 | 0**). Zum Schluss sagt er **„Geschafft!“**.",
+      "toolbox": [
+        "event_flag",
+        "motion_move",
+        "motion_goto",
+        "motion_glide",
+        "looks_say_secs",
+        "looks_say"
+      ],
+      "starter": "wenn_start",
+      "stage": {
+        "grid": true
+      },
+      "checks": [
+        {
+          "type": "blockCount",
+          "block": "motion_glide",
+          "min": 2,
+          "message": "Benutze zweimal den Block „gleite in … Sek. zu x: … y: …“."
+        },
+        {
+          "type": "position",
+          "x": 0,
+          "y": 0,
+          "message": "Funki endet bei x = {x}, y = {y}. Er soll zurück in die Mitte gleiten."
+        },
+        {
+          "type": "said",
+          "text": "Geschafft",
+          "message": "Zum Schluss soll Funki „Geschafft!“ sagen."
+        }
+      ],
+      "hints": [
+        "Du brauchst zwei „gleite“-Blöcke und einen „sage“-Block.",
+        "gleite in 2 Sek. zu x: -150 y: 100 → gleite in 1 Sek. zu x: 0 y: 0 → sage Geschafft!"
+      ],
+      "solution": [
+        "wenn_start",
+        "  gleite 2 -150 100",
+        "  gleite 1 0 0",
+        "  sage_für \"Geschafft!\" 2"
+      ]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "type": "single",
+        "question": "Was macht der Block „gehe 10 Schritte“?",
+        "options": [
+          "Funki dreht sich um 10 Grad",
+          "Funki läuft 10 Schritte in seine Blickrichtung",
+          "Funki springt zu x: 10",
+          "Funki wartet 10 Sekunden"
+        ],
+        "answer": 1,
+        "explanation": "„gehe“ bewegt Funki in die Richtung, in die er gerade schaut."
+      },
+      {
+        "type": "single",
+        "question": "Wo ist die Mitte der Bühne?",
+        "options": [
+          "x: 240, y: 180",
+          "x: 0, y: 0",
+          "x: 100, y: 100",
+          "x: -240, y: -180"
+        ],
+        "answer": 1,
+        "explanation": "Die Mitte ist (0 | 0). Nach rechts wird x größer, nach oben wird y größer."
+      },
+      {
+        "type": "single",
+        "question": "Funki startet in der Mitte und schaut nach rechts. Wo steht er am Ende?",
+        "blocks": [
+          "wenn_start",
+          "  gehe 50",
+          "  gehe 30"
+        ],
+        "options": [
+          "x: 50",
+          "x: 30",
+          "x: 80",
+          "x: 20"
+        ],
+        "answer": 2,
+        "explanation": "50 + 30 = 80 Schritte nach rechts."
+      },
+      {
+        "type": "text",
+        "question": "Wie viel Grad hat eine Vierteldrehung?",
+        "answer": [
+          "90",
+          "90 Grad",
+          "90°"
+        ],
+        "placeholder": "Zahl",
+        "explanation": "Ein ganzer Kreis hat 360 Grad, ein Viertel davon sind 90 Grad."
+      },
+      {
+        "type": "order",
+        "question": "Bring die Blöcke in die richtige Reihenfolge: Funki soll erst laufen und dann „Fertig!“ sagen.",
+        "lines": [
+          "Wenn ▶ angeklickt",
+          "gehe 100 Schritte",
+          "sage „Fertig!“ für 2 Sekunden"
+        ],
+        "explanation": "Der Startblock steht immer oben. Danach kommen die Befehle in der Reihenfolge, in der sie passieren sollen."
+      }
+    ]
+  },
+  "project": {
+    "title": "Funkis Spaziergang",
+    "kind": "blocks",
+    "description": "Erfinde einen Spaziergang für Funki über die Bühne! Er kann laufen, sich drehen, an andere Stellen springen, gleiten und etwas erzählen. Denk dir eine kleine Geschichte aus: Wohin geht Funki und was sagt er unterwegs?",
+    "toolbox": [
+      "event_flag",
+      "motion_move",
+      "motion_turn_right",
+      "motion_turn_left",
+      "motion_goto",
+      "motion_glide",
+      "motion_point",
+      "looks_say_secs",
+      "looks_say",
+      "looks_set_size",
+      "looks_color"
+    ],
+    "starter": "wenn_start",
+    "stage": {
+      "grid": true
+    },
+    "requirements": [
+      "Funki bewegt sich mindestens viermal.",
+      "Funki dreht sich mindestens einmal.",
+      "Funki sagt am Ende etwas."
+    ],
+    "checks": [
+      {
+        "type": "blockCount",
+        "min": 5,
+        "message": "Dein Spaziergang braucht noch ein paar Blöcke mehr (mindestens 5)."
+      },
+      {
+        "type": "moved",
+        "message": "Funki soll sich bewegen!"
+      },
+      {
+        "type": "said",
+        "text": "",
+        "message": "Funki soll auch etwas sagen."
+      }
+    ],
+    "ideas": [
+      "Ändere mit „setze Farbe auf …“ Funkis Farbe.",
+      "Lass Funki mit „setze Größe auf …“ wachsen oder schrumpfen."
+    ],
+    "example": [
+      "wenn_start",
+      "  gehe_zu -180 -100",
+      "  sage_für \"Ich gehe spazieren!\" 2",
+      "  gleite 2 0 -100",
+      "  drehe_links 90",
+      "  gehe 120",
+      "  setze_x 150",
+      "  sage_für \"Was für eine schöne Aussicht!\" 2"
+    ]
+  }
+}
